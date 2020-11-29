@@ -1,0 +1,28 @@
+nav{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    border-bottom: 1px solid gray;
+    padding: 0 3em 0 3em;
+}
+ul{
+    display: flex;
+    flex-direction: row;
+    padding: 0px;
+    margin: 0px;
+}
+ul>li:not(:last-child){
+    margin-right: 15px;
+}
+a{
+    text-decoration: unset;
+    font-family: Georgia, serif;
+}
+a:hover{
+    cursor: pointer;
+    border-bottom: 1px blue solid;
+}
+h2{
+    margin: 5px 0px 5px 0px;
+}
