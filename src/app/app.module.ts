@@ -12,6 +12,7 @@ import { LoginComponent } from './login/login.component';
 import { RegisterComponent } from './register/register.component';
 import { BrowserStorage } from './storage.service';
 import { ImportResolver } from '@angular/compiler';
+import { FirebaseService } from './firebase.service';
 @NgModule({
   declarations: [
     AppComponent,
@@ -26,7 +27,7 @@ import { ImportResolver } from '@angular/compiler';
     HttpModule,
     AppRoutingModule //router goes here
   ],
-  providers: [UserService, BrowserStorage], //services
+  providers: [UserService, BrowserStorage, FirebaseService], //services
   bootstrap: [AppComponent, AppNavbarComponent, FooterComponent] //cross page components
 })
 export class AppModule { }
