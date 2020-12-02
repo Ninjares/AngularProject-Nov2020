@@ -1,12 +1,16 @@
 import { Injectable } from '@angular/core';
 import { Http } from '@angular/http';
-import { catchError } from 'rxjs/operators';
+import { Observable } from 'rxjs/Observable';
+import { catchError, map } from 'rxjs/operators';
+//import { AngularFireAuth, AngularFireAuthModule } from '@angular/fire/auth'
+//import * as firebase from '@angular/fire'
 
+//npm install @angular/fire
 @Injectable()
 export class FirebaseService {
- firebaseConfig;
+  firebaseConfig;
 
-  constructor(private http:Http) {
+  constructor(private http:Http, /*public afAuth: AngularFireAuth*/) {
     this.firebaseConfig = {
       apiKey: "AIzaSyB0hU0PPP1gEAMRKHWVPSZFnAcj2Mixw9E",
       authDomain: "exchange-f0352.firebaseapp.com",
@@ -20,7 +24,34 @@ export class FirebaseService {
   }
   test():void{
     console.log('fb');
-    this.http.get (`${this.firebaseConfig.databaseURL}/tests/1.json`).subscribe(x => console.log(x.json()));
+    this.http.get(`${this.firebaseConfig.databaseURL}/tests/1.json`).pipe().subscribe(x => console.log(x));
     this.http.post(`${this.firebaseConfig.databaseURL}/tests/.json`, JSON.stringify(['a',2,true])).subscribe();
   }
+
+  register(user){
+    this.http.put(`${this.firebaseConfig.databaseURL}/users/${user.username}.json`, JSON.stringify(
+      {
+        email: user.email,
+        phoneNumber: user.phoneNumber,
+        password: user.password,
+        BTC: 0.1,
+        USD: 1000,
+      }
+    )).subscribe();
+  }
+  getUser(username:string):Promise<any>{
+    return this.http.get(`${this.firebaseConfig.databaseURL}/users/${username}.json`).toPromise().then(x => x.json());
+  }
+  getUsers():Promise<any>{
+    return this.http.get(`${this.firebaseConfig.databaseURL}/users/.json`).toPromise().then(x => x.json());
+  }
+
+  // registerAuth(value){
+  //   return new Promise<any>((resolve, reject) => {
+  //     this.afAuth.createUserWithEmailAndPassword(value.email, value.password)
+  //     .then(res => {
+  //       resolve(res);
+  //     }, err => reject(err));
+  //   })
+  // }
 }

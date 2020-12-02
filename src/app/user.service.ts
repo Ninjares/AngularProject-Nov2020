@@ -2,6 +2,8 @@ import { Injectable } from '@angular/core';
 import { StringMapWrapper } from '@angular/core/src/facade/collection';
 import { AppModule } from './app.module'
 import { BrowserStorage } from './storage.service';
+import { FirebaseService } from './firebase.service'
+import { Observable } from 'rxjs/Observable';
 
 @Injectable()
 export class UserService {
@@ -12,18 +14,40 @@ export class UserService {
   get LoggedUser(){
     return this.storage.getItem('currentlyLogged');
   }
-  constructor(private storage: BrowserStorage) { }
-  register(username: string, email: string, password: string, passwordRepeat: string):void{
-    console.log(username);
-    console.log(email);
-    console.log(password);
-    console.log(passwordRepeat);
-
+  constructor(private storage: BrowserStorage, private firebase: FirebaseService) {
+    
   }
-  login(username: string, password:string):void{
-    console.log(username);
-    console.log(password);
-    this.storage.setItem('currentlyLogged', username);
+  register(value):void{
+    //password requirements
+    //password and repeat password
+    //email format
+    //phone number format
+    this.userExists(value.username).then(x => {
+      if(x) this.firebase.register(value);
+      else throw new Error('User Already Exists');
+    }).catch(err => console.error(err));
+  }
+
+  login(value):void{
+    this.userExists(value.username).then(x => {
+      if(x){
+        this.firebase.getUser(value.username).then(user => {
+          if(value.password == user.password){
+            this.storage.setItem('currentlyLogged', value.username);
+            console.log('Login Successful');
+          }
+          else throw new Error('Wrong username/password');
+        }).catch(err => console.error(err));
+      }
+      else throw new Error('User doesn\'t exist');
+    }).catch(err => console.error(err));
+  }
+  private userExists(username:string){
+    return this.firebase.getUser(username).then(user => {
+      if(user==null)
+      return false; 
+      else return true;
+    });
   }
   logout():void{
     this.storage.removeItem('currentlyLogged');

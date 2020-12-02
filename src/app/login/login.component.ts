@@ -14,7 +14,7 @@ export class LoginComponent implements OnInit {
 
   }
   loginHandler(formValue: { username: string, password:string}):void{
-    this.userService.login(formValue.username, formValue.password);
+    this.userService.login(formValue);
   }
 
 }

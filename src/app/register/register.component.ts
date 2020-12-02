@@ -8,11 +8,15 @@ import { UserService } from './../user.service';
 })
 export class RegisterComponent implements OnInit {
 
-  constructor(public userService: UserService) { }
-  registrationHandler(formValue: { username: string, email:string, password: string, repeatPassword: string}):void{
-    
-    this.userService.register(formValue.username, formValue.email, formValue.password, formValue.repeatPassword);
+  constructor(public userService: UserService) { 
+
   }
+  registrationHandler(formValue: { username: string, email:string, phoneNumber: string, password: string, repeatPassword: string}):void{
+    this.userService.register(formValue);
+  }
+  // authRegister(value){
+  //   this.userService.registerAuth(value);
+  // }
   ngOnInit() {
   }
 

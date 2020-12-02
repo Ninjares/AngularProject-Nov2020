@@ -13,6 +13,10 @@ import { RegisterComponent } from './register/register.component';
 import { BrowserStorage } from './storage.service';
 import { ImportResolver } from '@angular/compiler';
 import { FirebaseService } from './firebase.service';
+// import { AngularFireModule } from '@angular/fire';
+// import { AngularFirestoreModule } from '@angular/fire/firestore';
+// import { AngularFireAuthModule } from '@angular/fire/auth';
+import { environment } from 'environments/environment';
 @NgModule({
   declarations: [
     AppComponent,
@@ -25,6 +29,10 @@ import { FirebaseService } from './firebase.service';
     BrowserModule,
     FormsModule,
     HttpModule,
+
+   // AngularFireModule.initializeApp(environment.firebase),
+   // AngularFirestoreModule,
+   // AngularFireAuthModule,
     AppRoutingModule //router goes here
   ],
   providers: [UserService, BrowserStorage, FirebaseService], //services
