@@ -17,13 +17,31 @@ import { FirebaseService } from './firebase.service';
 // import { AngularFirestoreModule } from '@angular/fire/firestore';
 // import { AngularFireAuthModule } from '@angular/fire/auth';
 import { environment } from 'environments/environment';
+import { HomeLoggedInComponent } from './home-logged-in/home-logged-in.component';
+import { HomepageComponent } from './homepage/homepage.component';
+import { LiPendingTransactionComponent } from './transaction-components/li-pending-transaction/li-pending-transaction.component';
+import { LiCompletedTransactionComponent } from './transaction-components/li-completed-transaction/li-completed-transaction.component';
+import { VPendingTransactionComponent } from './transaction-components/v-pending-transaction/v-pending-transaction.component';
+import { VCompletedTransactionComponent } from './transaction-components/v-completed-transaction/v-completed-transaction.component';
+import { CreateTransactionComponent } from './transaction-forms/create-transaction/create-transaction.component';
+import { EngageTransactionComponent } from './transaction-forms/engage-transaction/engage-transaction.component';
+import { UserPageComponent } from './user-page/user-page.component';
 @NgModule({
   declarations: [
     AppComponent,
     AppNavbarComponent,
     FooterComponent,
     LoginComponent,
-    RegisterComponent
+    RegisterComponent,
+    HomeLoggedInComponent,
+    HomepageComponent,
+    LiPendingTransactionComponent,
+    LiCompletedTransactionComponent,
+    VPendingTransactionComponent,
+    VCompletedTransactionComponent,
+    CreateTransactionComponent,
+    EngageTransactionComponent,
+    UserPageComponent
   ],
   imports: [
     BrowserModule,
