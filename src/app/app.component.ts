@@ -12,6 +12,5 @@ export class AppComponent {
 
   }
   fbTest(){
-    this.fb.test();
   }
 }

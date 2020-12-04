@@ -26,6 +26,7 @@ import { VCompletedTransactionComponent } from './transaction-components/v-compl
 import { CreateTransactionComponent } from './transaction-forms/create-transaction/create-transaction.component';
 import { EngageTransactionComponent } from './transaction-forms/engage-transaction/engage-transaction.component';
 import { UserPageComponent } from './user-page/user-page.component';
+import { TransactionHandlerService } from './transaction-handler.service';
 @NgModule({
   declarations: [
     AppComponent,
@@ -53,7 +54,7 @@ import { UserPageComponent } from './user-page/user-page.component';
    // AngularFireAuthModule,
     AppRoutingModule //router goes here
   ],
-  providers: [UserService, BrowserStorage, FirebaseService], //services
+  providers: [UserService, BrowserStorage, FirebaseService, TransactionHandlerService], //services
   bootstrap: [AppComponent, AppNavbarComponent, FooterComponent] //cross page components
 })
 export class AppModule { }

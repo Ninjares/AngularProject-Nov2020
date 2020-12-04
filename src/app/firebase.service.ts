@@ -22,11 +22,6 @@ export class FirebaseService {
       measurementId: "G-T03J2FVSFS"
     };
   }
-  test():void{
-    console.log('fb');
-    this.http.get(`${this.firebaseConfig.databaseURL}/tests/1.json`).pipe().subscribe(x => console.log(x));
-    this.http.post(`${this.firebaseConfig.databaseURL}/tests/.json`, JSON.stringify(['a',2,true])).subscribe();
-  }
 
   register(user){
     this.http.put(`${this.firebaseConfig.databaseURL}/users/${user.username}.json`, JSON.stringify(
@@ -45,6 +40,11 @@ export class FirebaseService {
   getUsers():Promise<any>{
     return this.http.get(`${this.firebaseConfig.databaseURL}/users/.json`).toPromise().then(x => x.json());
   }
+
+  createTransaction(trxData){
+    return this.http.post(`${this.firebaseConfig.databaseURL}/pendingTransactions/.json`, JSON.stringify(trxData)).subscribe();
+  }
+
 
   // registerAuth(value){
   //   return new Promise<any>((resolve, reject) => {

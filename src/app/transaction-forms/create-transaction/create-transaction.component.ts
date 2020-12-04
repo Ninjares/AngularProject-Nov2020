@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { TransactionHandlerService } from 'app/transaction-handler.service';
 
 @Component({
   selector: 'app-create-transaction',
@@ -7,7 +8,7 @@ import { Component, OnInit } from '@angular/core';
 })
 export class CreateTransactionComponent implements OnInit {
 
-  constructor() { }
+  constructor(public transactionhandler: TransactionHandlerService) { }
 
   //Title
   //Picture
@@ -16,6 +17,6 @@ export class CreateTransactionComponent implements OnInit {
   ngOnInit() {
   }
   submissionHandler(formValue){
-    console.log(formValue);
+    this.transactionhandler.createTransaction(formValue);
   }
 }
