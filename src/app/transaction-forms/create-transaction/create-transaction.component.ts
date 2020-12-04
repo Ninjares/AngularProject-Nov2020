@@ -9,7 +9,13 @@ export class CreateTransactionComponent implements OnInit {
 
   constructor() { }
 
+  //Title
+  //Picture
+  //Description
+  //Price USD for now BTC later
   ngOnInit() {
   }
-
+  submissionHandler(formValue){
+    console.log(formValue);
+  }
 }

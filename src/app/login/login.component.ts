@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { UserService } from './../user.service';
 import { Router } from '@angular/router';
+import { toUnicode } from 'punycode';
 
 @Component({
   selector: 'app-login',
@@ -9,7 +10,20 @@ import { Router } from '@angular/router';
 })
 export class LoginComponent implements OnInit {
 
-  constructor(public userService: UserService, private router: Router) { }
+  form = {
+    username:{
+      touched: false,
+      value: ''
+    },
+    password:{
+      touched: false,
+      value: ''
+    }
+  }
+
+  constructor(public userService: UserService, private router: Router) {
+    console.log(this.form);
+  }
 
   ngOnInit() {
 
