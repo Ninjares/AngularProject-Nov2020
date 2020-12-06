@@ -1,32 +1,59 @@
-import { Component } from '@angular/core';
-import { RouterModule, Routes } from '@angular/router';
-import { FooterComponent } from './footer/footer.component';
+import { NgModule } from '@angular/core';
+import { Routes, RouterModule } from '@angular/router';
+import { HomeLoggedInComponent } from './home-logged-in/home-logged-in.component';
 import { HomepageComponent } from './homepage/homepage.component';
-import { LoginComponent } from './login/login.component';
-import { RegisterComponent } from './register/register.component'
-import { CreateTransactionComponent } from './transaction-forms/create-transaction/create-transaction.component';
+import { AuthGuard } from './services/auth.guard';
+import { LoginComponent } from './user/login/login.component';
+import { RegisterComponent } from './user/register/register.component';
 
 const routes: Routes = [
-    {
-        path: '',
-        pathMatch: 'full',
-        component: HomepageComponent //your component here
-    },
-    {
-        path: 'login',
-        pathMatch: 'full',
-        component: LoginComponent //your component here
-    },
-    {
-        path: 'register',
-        pathMatch: 'full',
-        component: RegisterComponent //your component here
-    },
-    {
-        path: 'create',
-        pathMatch: 'full',
-        component: CreateTransactionComponent //your component here
+  {
+    path: '',
+    pathMatch: 'full',
+    component: HomepageComponent, //your component here
+    canActivate: [AuthGuard],
+    data: {
+      isLogged: false,
+      redirectTo: 'logged'
     }
-];
+  },
+  {
+    path:'user', //you can also use can activateChild
+    children: [
+      {
+        path: 'login',
+        component: LoginComponent, //your component here
+        canActivate: [AuthGuard],
+        data:{
+          isLogged: false,
+          redirectTo: ''
+        }
+      },
+      {
+        path: 'register',
+        component: RegisterComponent, //your component here
+        canActivate: [AuthGuard],
+        data:{
+          isLogged: false,
+          redirectTo: ''
+        } 
+      }
+    ]
+  },
+  {
+    path: 'logged', //find a way to loggedinHome without the logged path
+    pathMatch: 'full',
+    component: HomeLoggedInComponent,
+    canActivate: [AuthGuard],
+    data:{
+      isLogged: true, 
+      redirectTo: ''
+    }
+  }
+]
 
-export const AppRoutingModule = RouterModule.forRoot(routes);
+@NgModule({
+  imports: [RouterModule.forRoot(routes)],
+  exports: [RouterModule]
+})
+export class AppRoutingModule { }

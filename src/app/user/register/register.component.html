@@ -1,0 +1,23 @@
+<form #f='ngForm' class="register" (ngSubmit)="registrationHandler(f.value)">
+    <div class="form-group">
+        <label for="username">Username</label>
+        <input ngModel type="username" class="form-control" placeholder="Username" name="username" value="" required>
+    </div>
+    <div class="form-group">
+        <label for="email">Email</label>
+        <input ngModel type="email" class="form-control" placeholder="Email" name="email" value="" required>
+    </div>
+    <div class="form-group">
+        <label for="phoneNumber">Phone Number</label>
+        <input ngModel type="phoneNumber" class="form-control" placeholder="Phone Number" name="phoneNumber" value="" required pattern="[+]?[\d]*">
+    </div>
+    <div class="form-group">
+        <label for="password">Password</label>
+        <input ngModel type="password" class="form-control" placeholder="Password" name="password" value="" required>
+    </div>
+    <div class="form-group">
+        <label for="repeatPassword">Repeat Password</label>
+        <input ngModel type="password" class="form-control" placeholder="Repeat-Password" name="repeatPassword" value="" required>
+    </div>
+    <button type="submit" class="btn btn-primary">Register</button>
+</form>

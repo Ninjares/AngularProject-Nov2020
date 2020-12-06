@@ -1,0 +1,11 @@
+<nav>
+    <h2><a href="">Exchange</a></h2>
+    <ul type="none" *ngIf="!userService.isLogged">
+      <li><a href="user/register">Register</a></li>
+      <li><a href="user/login">Login</a></li>
+    </ul>
+    <ul type="none" *ngIf="userService.isLogged">
+      <li>Welcome, <a >{{Username}}</a></li>
+      <li><a (click)="logoutHandler()">Logout</a></li>
+    </ul>
+  </nav>

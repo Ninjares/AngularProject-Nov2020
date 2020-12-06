@@ -1,5 +1,4 @@
 import { Component } from '@angular/core';
-import { FirebaseService } from './firebase.service';
 
 @Component({
   selector: 'app-root',
@@ -7,10 +6,5 @@ import { FirebaseService } from './firebase.service';
   styleUrls: ['./app.component.css']
 })
 export class AppComponent {
-  title = 'app works!';
-  constructor(private fb: FirebaseService){
-
-  }
-  fbTest(){
-  }
+  title = 'Exchange2';
 }
