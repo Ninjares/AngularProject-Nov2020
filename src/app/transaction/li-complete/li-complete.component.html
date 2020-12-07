@@ -4,4 +4,5 @@
         <p>{{transaction.price}}</p>
         <button (click)="toggleDetails()">Details</button>
     </div>
+    <app-v-complete *ngIf="viewDetails" [transaction]="transaction"></app-v-complete>
 </li>
