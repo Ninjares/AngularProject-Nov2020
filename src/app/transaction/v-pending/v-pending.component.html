@@ -1,0 +1,16 @@
+<div class='mainC'>
+    <div class="imgContainer">
+        <img src="{{transaction.imageUrl}}">
+    </div>
+    <div class='details'>
+        <div class="top">
+            <h2>{{transaction.title}}</h2>
+            <p>{{transaction.publisherUsername}}</p>
+        </div>
+        <div class="bottom">
+            <p>{{transaction.description}}</p>
+            <p>${{transaction.price}}</p>
+            <a href="tx/transact/{{transaction.id}}">Buy</a>
+        </div>
+    </div>
+</div>

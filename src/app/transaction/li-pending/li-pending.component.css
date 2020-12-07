@@ -1,9 +1,11 @@
-li{
+.listing{
     display: flex;
     flex-direction: row;
-    border: 1px grey solid;
     justify-content: space-between;
 }
-li *{
+.listing *{
     margin: 5px;
+}
+li{
+    border: 1px grey solid;
 }

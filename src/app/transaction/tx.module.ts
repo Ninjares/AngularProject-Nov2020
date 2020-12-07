@@ -4,14 +4,18 @@ import { TxService } from './tx.service';
 import { LiPendingComponent } from './li-pending/li-pending.component';
 import { CreateNewComponent } from './form/create-new/create-new.component';
 import { EditComponent } from './form/edit/edit.component';
-import { TxRoutingModule } from './form/TxRouting';
+import { TxRoutingModule } from './TxRouting';
 import { FormsModule } from '@angular/forms';
+import { VPendingComponent } from './v-pending/v-pending.component';
+import { TxCompleteComponent } from './tx-complete/tx-complete.component';
 
 @NgModule({
   declarations: [
     LiPendingComponent,
     CreateNewComponent,
-    EditComponent
+    EditComponent,
+    VPendingComponent,
+    TxCompleteComponent
   ],
   imports: [
     CommonModule,

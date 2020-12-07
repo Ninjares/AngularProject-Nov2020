@@ -16,11 +16,10 @@ export class FirebaseService {
         email: userdata.email,
         phoneNumber: userdata.phoneNumber,
         password: userdata.password,
-        BTC: 0.1,
         USD: 1000,
     });
   }
-  getUser(username:string):Observable<any>{
+  getUser(username):Observable<any>{
     return this.http.get<any>(`${apiUrl}/users/${username}.json`)
   }
   getPendingTransactions():Observable<[]>{
@@ -28,5 +27,19 @@ export class FirebaseService {
   }
   createTx(txData){
     return this.http.post<any>(`${apiUrl}/pendingTransactions/.json`, txData);
+  }
+  deletePending(id){
+    return this.http.delete(`${apiUrl}/pendingTransactions/${id}.json`);
+  }
+  completeTx(txData){
+    return this.http.post(`${apiUrl}/completedTransactions/.json`, txData);
+  }
+  getTransaction(id){
+    return this.http.get<any>(`${apiUrl}/pendingTransactions/${id}.json`);
+  }
+  updateFunds(username, sum){
+    this.http.get<any>(`${apiUrl}/users/${username}/USD.json`).subscribe(x => {
+      this.http.put<any>(`${apiUrl}/users/${username}/USD.json`, Number(x)+Number(sum)).subscribe();
+    });
   }
 }

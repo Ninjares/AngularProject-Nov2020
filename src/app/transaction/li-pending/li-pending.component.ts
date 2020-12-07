@@ -8,9 +8,14 @@ import { TxModel } from '../models/TxModel';
 })
 export class LiPendingComponent implements OnInit {
 
+  viewDetails:boolean = false;
   constructor() { }
   @Input() transaction: TxModel;
   ngOnInit(): void {
+  }
+
+  toggleDetails(){
+    this.viewDetails = !this.viewDetails;
   }
 
 }

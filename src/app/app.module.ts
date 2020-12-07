@@ -19,7 +19,7 @@ import { HomeLoggedInComponent } from './home-logged-in/home-logged-in.component
 import { AuthGuard } from './services/auth.guard';
 import { CreateNewComponent } from './transaction/form/create-new/create-new.component';
 import { EditComponent } from './transaction/form/edit/edit.component';
-import { TxRoutingModule } from './transaction/form/TxRouting';
+import { TxRoutingModule } from './transaction/TxRouting';
 import { TxModule } from './transaction/tx.module';
 @NgModule({
   declarations: [
