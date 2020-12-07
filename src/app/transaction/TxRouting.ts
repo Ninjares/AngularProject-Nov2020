@@ -6,8 +6,8 @@ const routes: Routes = [
         path: 'tx',
         children: [
             {
-            path: 'create',
-            component: CreateNewComponent
+                path: 'create',
+                component: CreateNewComponent
             },
             {
                 path: 'transact/:id',

@@ -1,8 +1,9 @@
-export interface TxModel {
+export interface TxComplete{
     id: string;
     title: string;
     imageUrl: string;
     price: number;
-    publisherUsername: string;
+    buyer: string;
+    seller: string;
     description: string;
 }

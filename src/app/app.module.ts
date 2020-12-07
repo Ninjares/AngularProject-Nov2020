@@ -21,15 +21,13 @@ import { CreateNewComponent } from './transaction/form/create-new/create-new.com
 import { EditComponent } from './transaction/form/edit/edit.component';
 import { TxRoutingModule } from './transaction/TxRouting';
 import { TxModule } from './transaction/tx.module';
+import { UserModule } from './user/user.module';
 @NgModule({
   declarations: [
     AppComponent,
     NavbarComponent,
     FooterComponent,
     HomepageComponent,
-    LoginComponent,
-    RegisterComponent,
-    UserComponent,
     HomeLoggedInComponent,
   ],
   imports: [
@@ -37,7 +35,8 @@ import { TxModule } from './transaction/tx.module';
     AppRoutingModule,
     FormsModule,
     HttpClientModule,
-    TxModule
+    TxModule,
+    UserModule
   ],
   providers: [FirebaseService, UserService, StorageService, AuthGuard],
   bootstrap: [AppComponent, NavbarComponent, FooterComponent]

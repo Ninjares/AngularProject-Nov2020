@@ -1,0 +1,11 @@
+.listing{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+}
+.listing *{
+    margin: 5px;
+}
+li{
+    border: 1px grey solid;
+}

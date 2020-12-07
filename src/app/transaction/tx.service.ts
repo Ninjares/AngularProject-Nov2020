@@ -46,6 +46,11 @@ export class TxService {
   getPendingTx(id){
     return this.fb.getTransaction(id);
   }
+  getCompletedTxs(){
+    return this.fb.getCompletedTxs().pipe(map(x => {
+      return this.ObjectToArray(x);
+    }));
+  }
 
   private ObjectToArray(obj){
     return Object.keys(obj).reduce((arr, currId) => {

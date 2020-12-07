@@ -1,1 +1,21 @@
-<p>user works!</p>
+<div class="container">
+    <div class='userSection'>
+        <h2>Username</h2>
+    </div>
+
+    <div class="TxSection">
+        
+        <div class='openTx'>
+            <h3>Open Transactions</h3>
+            <ul>
+                <app-li-pending *ngFor="let t of pendingTxs" [transaction]="t"></app-li-pending>
+            </ul>
+        </div>
+        <div class='CompletedTx'>
+            <h3>Completed Transactions</h3>
+            <ul>
+                <app-li-complete *ngFor="let t of completeTxs" [transaction]="t"></app-li-complete>
+            </ul>
+        </div>
+    </div>
+</div>

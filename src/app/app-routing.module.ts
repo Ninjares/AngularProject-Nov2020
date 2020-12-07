@@ -17,29 +17,7 @@ const routes: Routes = [
       redirectTo: 'logged'
     }
   },
-  {
-    path:'user', //you can also use can activateChild
-    children: [
-      {
-        path: 'login',
-        component: LoginComponent, //your component here
-        canActivate: [AuthGuard],
-        data:{
-          isLogged: false,
-          redirectTo: ''
-        }
-      },
-      {
-        path: 'register',
-        component: RegisterComponent, //your component here
-        canActivate: [AuthGuard],
-        data:{
-          isLogged: false,
-          redirectTo: ''
-        } 
-      }
-    ]
-  },
+  
   {
     path: 'logged', //find a way to loggedinHome without the logged path
     pathMatch: 'full',

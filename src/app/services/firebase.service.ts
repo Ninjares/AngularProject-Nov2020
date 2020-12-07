@@ -25,18 +25,23 @@ export class FirebaseService {
   getPendingTransactions():Observable<[]>{
     return this.http.get<[]>(`${apiUrl}/pendingTransactions/.json`);
   }
+  getTransaction(id){
+    return this.http.get<any>(`${apiUrl}/pendingTransactions/${id}.json`);
+  }
   createTx(txData){
     return this.http.post<any>(`${apiUrl}/pendingTransactions/.json`, txData);
-  }
-  deletePending(id){
-    return this.http.delete(`${apiUrl}/pendingTransactions/${id}.json`);
   }
   completeTx(txData){
     return this.http.post(`${apiUrl}/completedTransactions/.json`, txData);
   }
-  getTransaction(id){
-    return this.http.get<any>(`${apiUrl}/pendingTransactions/${id}.json`);
+  deletePending(id){
+    return this.http.delete(`${apiUrl}/pendingTransactions/${id}.json`);
   }
+  getCompletedTxs(){
+    return this.http.get<[]>(`${apiUrl}/completedTransactions/.json`);
+  }
+
+
   updateFunds(username, sum){
     this.http.get<any>(`${apiUrl}/users/${username}/USD.json`).subscribe(x => {
       this.http.put<any>(`${apiUrl}/users/${username}/USD.json`, Number(x)+Number(sum)).subscribe();

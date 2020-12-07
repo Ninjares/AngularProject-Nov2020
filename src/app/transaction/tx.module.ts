@@ -8,6 +8,8 @@ import { TxRoutingModule } from './TxRouting';
 import { FormsModule } from '@angular/forms';
 import { VPendingComponent } from './v-pending/v-pending.component';
 import { TxCompleteComponent } from './tx-complete/tx-complete.component';
+import { LiCompleteComponent } from './li-complete/li-complete.component';
+import { VCompleteComponent } from './v-complete/v-complete.component';
 
 @NgModule({
   declarations: [
@@ -15,7 +17,9 @@ import { TxCompleteComponent } from './tx-complete/tx-complete.component';
     CreateNewComponent,
     EditComponent,
     VPendingComponent,
-    TxCompleteComponent
+    TxCompleteComponent,
+    LiCompleteComponent,
+    VCompleteComponent
   ],
   imports: [
     CommonModule,
@@ -26,7 +30,8 @@ import { TxCompleteComponent } from './tx-complete/tx-complete.component';
     TxService
   ],
   exports:[
-    LiPendingComponent
+    LiPendingComponent,
+    LiCompleteComponent
   ]
 })
 export class TxModule { }
