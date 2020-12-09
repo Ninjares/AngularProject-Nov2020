@@ -2,9 +2,8 @@
     <div class="listing">
         <p>{{transaction.title}}</p>
         <p>{{transaction.publisherUsername}}</p>
-        <p>{{transaction.price}}</p>
+        <p>$ {{transaction.price}}</p>
         <button (click)="toggleDetails()">Details</button>
     </div>
-    
     <app-v-pending *ngIf="viewDetails" [transaction]="transaction"></app-v-pending>
 </li>

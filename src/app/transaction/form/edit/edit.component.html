@@ -1,1 +1,21 @@
-<p>edit works!</p>
+<h2>Edit</h2>
+<form #f="ngForm" class="register" (ngSubmit)="submissionHandler(f.value)">
+    <div class="form-group">
+      <label for="title">Title </label>
+      <input #title="ngModel" ngModel="{{transaction.title}}" type="text" class="form-control" placeholder="Smartphone X" name="title" value="" required>
+    </div>
+    <div class="form-group">
+      <label for="imageUrl">Image Url</label>
+      <input #imageUrl="ngModel" ngModel="{{transaction.imageUrl}}" type="text" class="form-control" placeholder="https://.." name="imageUrl" value="">
+    </div>
+    <div class="form-group">
+      <label for="price">Price USD</label>
+      <input #price="ngModel" ngModel="{{transaction.price}}" type="text" class="form-control" placeholder="0.00" name="price" value="" required pattern="[\d]*([.][\d]{2})?">
+    </div>
+    <div class="form-group">
+      <label for="description">Description</label>
+      <input #description="ngModel" ngModel="{{transaction.description}}" type="text" class="form-control" placeholder="This product is.." name="description" value="">
+    </div>
+  
+    <button type="submit" class="btn btn-primary">Update</button>
+</form>

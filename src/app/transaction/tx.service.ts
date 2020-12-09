@@ -27,7 +27,8 @@ export class TxService {
             description: ptx.description,
             price: ptx.price,
             buyer: this.userService.LoggedUser,
-            seller: ptx.publisherUsername
+            seller: ptx.publisherUsername,
+            purchasedOn: Date.now()
           }).pipe(map(x => this.fb.deletePending(itemId)));
         }
       }))
@@ -36,15 +37,19 @@ export class TxService {
 
   createTx(value){
     value.publisherUsername = this.userService.LoggedUser;
+    value.createdOn = Date.now();
     return this.fb.createTx(value);
+  }
+  getPendingTx(id){
+    return this.fb.getTransaction(id);
+  }
+  updateTx(id, tx){
+    return this.fb.updateTx(id, tx);
   }
   getPendingTxs(){
     return this.fb.getPendingTransactions().pipe(map(x => {
       return this.ObjectToArray(x);
     }));
-  }
-  getPendingTx(id){
-    return this.fb.getTransaction(id);
   }
   getCompletedTxs(){
     return this.fb.getCompletedTxs().pipe(map(x => {

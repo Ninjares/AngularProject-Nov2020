@@ -4,13 +4,16 @@
 .mainC{
     display: flex;
     flex-direction: row;
+    margin: 1em 1em 1em 1em;
 }
 img{
     width: 35vw;
     height: 35vw;
-    max-width: 500px;
-    max-height: 500px;
+    max-width: 300px;
+    max-height: 300px;
     object-fit: cover;
+    border-radius: 1em;
+    margin: 0em 1em 0em 0em;
 }
 .details{
     flex-grow: 1;
@@ -21,4 +24,6 @@ img{
     display: flex;
     flex-direction: row;
     justify-content: space-between;
+    align-items: center;
+    padding-right: 2em;
 }

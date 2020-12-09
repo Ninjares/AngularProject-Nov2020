@@ -2,6 +2,7 @@
 <p>
     A platform where users can freely trade goods and services for money, cryptocurrency and barter.
 </p>
+<h3>Last 5 transactions</h3>
 <ul class="transactions">
-   <!-- <app-li-completed-transaction"></app-li-completed-transaction> -->
+    <app-li-complete *ngFor="let t of transactions" [transaction]="t"></app-li-complete>
 </ul>

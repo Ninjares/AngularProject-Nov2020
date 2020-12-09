@@ -5,12 +5,14 @@
     <div class='details'>
         <div class="top">
             <h2>{{transaction.title}}</h2>
-            <p>{{transaction.publisherUsername}}</p>
+            <p>Seller: <span>{{transaction.publisherUsername}}</span></p>
         </div>
+        <p>{{transaction.description}}</p>
         <div class="bottom">
-            <p>{{transaction.description}}</p>
-            <p>${{transaction.price}}</p>
+            <span>${{transaction.price}}</span>
             <a href="tx/transact/{{transaction.id}}">Buy</a>
+            <a href="tx/edit/{{transaction.id}}">Edit</a>
+            <a (click)="deletionHandler()">Delete</a>
         </div>
     </div>
 </div>

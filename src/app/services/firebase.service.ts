@@ -31,6 +31,9 @@ export class FirebaseService {
   createTx(txData){
     return this.http.post<any>(`${apiUrl}/pendingTransactions/.json`, txData);
   }
+  updateTx(id, data){
+    return this.http.put(`${apiUrl}/pendingTransactions/${id}.json`, data);
+  }
   completeTx(txData){
     return this.http.post(`${apiUrl}/completedTransactions/.json`, txData);
   }

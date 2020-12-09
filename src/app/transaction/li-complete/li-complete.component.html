@@ -1,7 +1,14 @@
 <li>
     <div class="listing">
-        <p>{{transaction.title}}</p>
-        <p>{{transaction.price}}</p>
+        <div class="left">
+            <p>{{transaction.seller}}</p>
+            <p>{{transaction.title}}</p>
+        </div>
+        <i class="fas fa-exchange-alt"></i>
+        <div class="right">
+            <p>${{transaction.price}}</p>
+            <p>{{transaction.buyer}}</p>
+        </div>
         <button (click)="toggleDetails()">Details</button>
     </div>
     <app-v-complete *ngIf="viewDetails" [transaction]="transaction"></app-v-complete>

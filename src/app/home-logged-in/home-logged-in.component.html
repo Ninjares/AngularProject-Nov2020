@@ -1,4 +1,6 @@
-<a href="/tx/create">Create new Transaction</a>
-<ul>
-    <app-li-pending *ngFor="let t of transactions" [transaction]="t"></app-li-pending>
-</ul>
+<div class="container">
+    <a href="/tx/create">Create new Transaction</a>
+    <ul type="none">
+        <app-li-pending *ngFor="let t of transactions" [transaction]="t"></app-li-pending>
+    </ul>
+</div>

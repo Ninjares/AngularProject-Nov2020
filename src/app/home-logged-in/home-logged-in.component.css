@@ -1,4 +1,21 @@
 ul{
-    margin: 2em 4em;
     padding: 0px;
+}
+a{
+    font-weight: bold;
+    text-decoration: none;
+    background-color: rgb(42, 136, 199);
+    color: white;
+    padding: 0.5em;
+    border-radius: calc(1vh + 1em);
+    border: 1px solid #444;
+}
+.container{
+    margin-top: 4em;
+}
+ul>app-li-pending>li{
+    border-radius: 1em 1em 0 0;
+}
+li:last-child{
+    border-radius: 0 0 1em 1em ;
 }

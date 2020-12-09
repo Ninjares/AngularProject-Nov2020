@@ -1,0 +1,13 @@
+.container{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+}
+.userSection{
+    flex-grow: 1;
+    max-width: 34%;
+}
+.TxSection{
+    flex-grow: 2;
+    max-width: 66%;
+}

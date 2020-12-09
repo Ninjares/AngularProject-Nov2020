@@ -1,3 +1,4 @@
+@import url("https://use.fontawesome.com/releases/v5.13.0/css/all.css");
 .listing{
     display: flex;
     flex-direction: row;
@@ -5,6 +6,19 @@
 }
 .listing *{
     margin: 5px;
+}
+.left, .right{
+    display: flex;
+    flex-direction: row;
+    flex-grow: 1;
+}
+.left *, .right *{
+    flex-grow: 1;
+    width: 1vw;
+}
+.right *{
+    justify-items: flex-end;
+    text-align: right;
 }
 li{
     border: 1px grey solid;

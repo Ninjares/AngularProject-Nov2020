@@ -1,1 +1,5 @@
-<button (click)="purchase()">Purchase</button>
+<h1>{{transaction.title}}</h1>
+<h3>by {{transaction.publisherUsername}}</h3>
+<img src="{{transaction.imageUrl}}">
+<p>{{transaction.Description}}</p>
+<button (click)="purchase()">Purchase ${{transaction.price}}</button>

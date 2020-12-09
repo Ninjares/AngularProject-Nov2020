@@ -5,4 +5,5 @@ export interface TxModel {
     price: number;
     publisherUsername: string;
     description: string;
+    createdOn: Date;
 }

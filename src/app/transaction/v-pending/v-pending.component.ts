@@ -13,5 +13,8 @@ export class VPendingComponent implements OnInit {
 
   ngOnInit(): void {
   }
+  deletionHandler(){
+    console.log('delete')
+  }
 
 }

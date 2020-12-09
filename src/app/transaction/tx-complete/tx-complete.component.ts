@@ -10,7 +10,7 @@ import { TxService } from '../tx.service';
 export class TxCompleteComponent implements OnInit {
 
   itemId:string = this.activatedRoute.snapshot.params.id;
-
+  transaction;
   constructor(private activatedRoute: ActivatedRoute, private txService: TxService) {
 
   }
@@ -18,10 +18,9 @@ export class TxCompleteComponent implements OnInit {
 
 
   ngOnInit(): void {
-    console.log(this.activatedRoute.snapshot.params.id);
     this.txService.getPendingTx(this.activatedRoute.snapshot.params.id).subscribe(
       (success) => {
-        console.log(success);
+        this.transaction = success;
       },
       (error) => {
         console.log(error.message);

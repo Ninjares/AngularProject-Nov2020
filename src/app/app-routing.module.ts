@@ -11,22 +11,17 @@ const routes: Routes = [
     path: '',
     pathMatch: 'full',
     component: HomepageComponent, //your component here
-    canActivate: [AuthGuard],
-    data: {
-      isLogged: false,
-      redirectTo: 'logged'
-    }
+    // canActivate: [AuthGuard],
+    // data: {
+    //   isLogged: false,
+    //   redirectTo: 'logged'
+    // }
   },
   
   {
-    path: 'logged', //find a way to loggedinHome without the logged path
+    path: 'market', //find a way to loggedinHome without the logged path
     pathMatch: 'full',
     component: HomeLoggedInComponent,
-    canActivate: [AuthGuard],
-    data:{
-      isLogged: true, 
-      redirectTo: ''
-    }
   }
 ]
 

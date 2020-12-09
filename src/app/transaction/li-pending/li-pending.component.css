@@ -1,9 +1,14 @@
 .listing{
     display: flex;
     flex-direction: row;
-    justify-content: space-between;
 }
-.listing *{
+.listing p{
+    display: flex;
+    margin: 5px;
+    flex-grow: 1;
+    width: 1vw;
+}
+button{
     margin: 5px;
 }
 li{

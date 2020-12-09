@@ -10,4 +10,5 @@
         <p *ngIf="password.touched&&password.value.length==0" class="input-error">Password Required</p>
     </div>
     <button type="submit" class="btn btn-primary">Login</button>
+    <p class="errorMessage" *ngIf="showErrorMessage">{{errorMessage}}</p>
 </form>

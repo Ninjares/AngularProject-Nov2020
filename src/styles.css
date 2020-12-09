@@ -1,5 +1,7 @@
 /* You can add global styles to this file, and also import other style files */
+@import url('https://fonts.googleapis.com/css2?family=Roboto&display=swap');
 body{
+    font-family: 'Roboto', sans-serif;
     margin: 0px;
     display: flex;
     flex-direction: column;
@@ -8,4 +10,8 @@ body{
 }
 app-root{
     flex-grow: 1;
+    min-width: 800px;
+    width: 70vw;
+    max-width: 1200px;
+    align-self: center;
 }

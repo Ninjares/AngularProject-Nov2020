@@ -9,6 +9,8 @@ import { UserService } from 'src/app/services/user.service';
 })
 export class LoginComponent implements OnInit {
 
+  errorMessage:string = "N/A";
+  showErrorMessage:boolean = false;
   constructor(private userService:UserService, private router: Router) { }
 
   ngOnInit(): void {
@@ -20,7 +22,12 @@ export class LoginComponent implements OnInit {
         this.router.navigate(['']);
       },
       (error) => { 
+        this.showErrorMessage = true;
+        this.errorMessage = error.message
         console.error(error.message);
+        setTimeout(() => {
+          this.showErrorMessage = false;
+        },3000);
       }
     );
   }
