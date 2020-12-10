@@ -23,3 +23,9 @@
 li{
     border: 1px grey solid;
 }
+i{
+    align-items: center;
+    display: flex;
+    flex-direction: row;
+    font-size: 1.3em;
+}

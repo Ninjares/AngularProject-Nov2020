@@ -5,7 +5,7 @@ import { RegisterComponent } from './register/register.component';
 import { UserComponent } from './user/user.component';
 import { UserService } from '../services/user.service';
 import { FirebaseService } from '../services/firebase.service';
-import { FormsModule } from '@angular/forms';
+import { FormBuilder, FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { userRoutingModule } from './userRouting'
 import { TxModule } from '../transaction/tx.module';
 
@@ -20,6 +20,7 @@ import { TxModule } from '../transaction/tx.module';
   imports: [
     CommonModule,
     FormsModule,
+    ReactiveFormsModule,
     userRoutingModule,
     TxModule
   ],

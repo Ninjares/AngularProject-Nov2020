@@ -1,23 +1,33 @@
-<form #f='ngForm' class="register" (ngSubmit)="registrationHandler(f.value)">
+<form [formGroup]='form' class="register" (ngSubmit)="registrationHandle()">
+    <!-- formControlName required by angular -->
     <div class="form-group">
         <label for="username">Username</label>
-        <input ngModel type="username" class="form-control" placeholder="Username" name="username" value="" required>
+        <input type="username" class="form-control" placeholder="Username" name="username" value="" formControlName="username">
+        <p *ngIf="form.get('username').touched && form.get('username').errors?.required" class="error">Username is required!</p>
+        <p *ngIf="form.get('username').touched && form.get('username').errors?.minlength" class="error">Username must be at least 4 charecters long</p>
     </div>
     <div class="form-group">
         <label for="email">Email</label>
-        <input ngModel type="email" class="form-control" placeholder="Email" name="email" value="" required>
+        <input type="email" class="form-control" placeholder="simon@gmail.com" name="email" value="" formControlName="email">
+        <p *ngIf="form.get('email').touched && form.get('email').errors?.required" class="error">Email is required!</p>
+        <p *ngIf="form.get('email').touched && form.get('email').errors?.pattern" class="error">Please enter a valid email</p>
     </div>
     <div class="form-group">
         <label for="phoneNumber">Phone Number</label>
-        <input ngModel type="phoneNumber" class="form-control" placeholder="Phone Number" name="phoneNumber" value="" required pattern="[+]?[\d]*">
+        <input type="phoneNumber" class="form-control" placeholder="Phone Number" name="phoneNumber" value="" formControlName="phoneNumber">
+        <p *ngIf="form.get('phoneNumber').touched && form.get('phoneNumber').errors?.required" class="error">Phone number is required!</p>
+        <p *ngIf="form.get('phoneNumber').touched && form.get('phoneNumber').errors?.pattern" class="error">Invalid input!</p>
     </div>
     <div class="form-group">
         <label for="password">Password</label>
-        <input ngModel type="password" class="form-control" placeholder="Password" name="password" value="" required>
+        <input type="password" class="form-control" placeholder="Password" name="password" value="" formControlName="password">
+        <p *ngIf="form.get('password').touched && form.get('password').errors?.required" class="error">Password is required!</p>
+        <p *ngIf="form.get('password').touched && form.get('password').errors?.minlength" class="error">Password must be at least 6 charecters long</p>
     </div>
     <div class="form-group">
         <label for="repeatPassword">Repeat Password</label>
-        <input ngModel type="password" class="form-control" placeholder="Repeat-Password" name="repeatPassword" value="" required>
+        <input type="password" class="form-control" placeholder="Repeat-Password" name="repeatPassword" value="" formControlName="repeatPassword">
+        <p *ngIf="form.get('repeatPassword').touched && form.get('repeatPassword').errors?.rePasswordValidator" class="error">Passwords do not match</p>
     </div>
-    <button type="submit" class="btn btn-primary">Register</button>
+    <button [disabled]="false ||form.invalid">Register</button>
 </form>

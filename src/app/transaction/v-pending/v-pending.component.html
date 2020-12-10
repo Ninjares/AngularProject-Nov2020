@@ -9,10 +9,12 @@
         </div>
         <p>{{transaction.description}}</p>
         <div class="bottom">
-            <span>${{transaction.price}}</span>
-            <a href="tx/transact/{{transaction.id}}">Buy</a>
-            <a href="tx/edit/{{transaction.id}}">Edit</a>
-            <a (click)="deletionHandler()">Delete</a>
+            <div class='buysection'>
+                <span>${{transaction.price}}</span>
+                <a class ="btn" *ngIf="isLogged && transaction.publisherUsername != LoggedUser" href="tx/transact/{{transaction.id}}">Buy</a>
+            </div>
+            <a class="edit btn" *ngIf="isLogged && transaction.publisherUsername == LoggedUser"href="tx/edit/{{transaction.id}}">Edit</a>
+            <a class="delete btn" *ngIf="isLogged && transaction.publisherUsername == LoggedUser"(click)="deletionHandler()">Delete</a>
         </div>
     </div>
 </div>

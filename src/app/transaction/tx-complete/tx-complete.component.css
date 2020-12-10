@@ -1,0 +1,17 @@
+img{
+    width: 100%;
+    align-self: center;
+    border-radius: 1em;
+    max-height: 800px;
+}
+.container{
+    display: flex;
+    flex-direction: column;
+    width: 70%;
+    margin: 3em 15% 4em 15%;
+}
+.title{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+}

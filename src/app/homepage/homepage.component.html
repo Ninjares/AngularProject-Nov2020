@@ -1,8 +1,22 @@
-<h1>Welcome to the Exchange!</h1>
-<p>
-    A platform where users can freely trade goods and services for money, cryptocurrency and barter.
-</p>
+<div class="mainC">
+    <div class="welcomingMessage">
+        <h1>Welcome to the Exchange!</h1>
+        <p>
+            A platform where users can freely trade goods and services for money, cryptocurrency and barter.
+        </p>
+    </div>
+    <hr>
+    <div class="controlPanel">
+            <div *ngIf="!userService.isLogged">
+                <p>Already a user?</p>
+                <a href="user/login">Login</a>
+                <p>Want to explored before <a href="user/register">registering</a>?</p>
+            </div>
+            <a href="/market">Go to market</a>
+    </div>
+
+</div>
 <h3>Last 5 transactions</h3>
-<ul class="transactions">
+<ul class="transactions" type="none">
     <app-li-complete *ngFor="let t of transactions" [transaction]="t"></app-li-complete>
 </ul>

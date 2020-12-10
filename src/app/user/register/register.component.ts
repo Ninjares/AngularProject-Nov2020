@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { UserService } from 'src/app/services/user.service';
+import { rePasswordValidatorFactory } from 'src/app/services/validators';
 
 @Component({
   selector: 'app-register',
@@ -9,12 +11,28 @@ import { UserService } from 'src/app/services/user.service';
 })
 export class RegisterComponent implements OnInit {
 
-  constructor(private userService: UserService, private router: Router) { }
+  form: FormGroup;
+  constructor(private userService: UserService, private router: Router, private fb:FormBuilder) { 
+     const passwordControl = this.fb.control('', [Validators.required, Validators.minLength(6)]);
+     this.form = this.fb.group({
+       username: ['', [Validators.required, Validators.minLength(4)]],
+       email: ['', [Validators.required, Validators.pattern('[a-zA-Z0-9]+[@][a-zA-Z0-9]+[.][a-zA-Z]{2,3}')]],
+       phoneNumber: ['',[Validators.required, Validators.pattern('[+]?[0-9]*')]],
+       password: passwordControl,
+       repeatPassword: ['',[rePasswordValidatorFactory(passwordControl)]] //don't forget that this returns a validator
+     })
+   }
   ngOnInit(): void {
     
   }
-  registrationHandler(value){
-    this.userService.register(value).subscribe(
+
+
+
+  registrationHandle(){
+   console.log(this.form.value);
+  }
+  registrationHandler(){
+    this.userService.register(this.form.value).subscribe(
       (success) => { 
         console.log("Username is free");
         success.subscribe((success) => {

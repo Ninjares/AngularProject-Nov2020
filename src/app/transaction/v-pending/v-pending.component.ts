@@ -1,4 +1,6 @@
 import { Component, Input, OnInit } from '@angular/core';
+import { transcode } from 'buffer';
+import { UserService } from 'src/app/services/user.service';
 import { TxModel } from '../models/TxModel';
 
 @Component({
@@ -9,8 +11,9 @@ import { TxModel } from '../models/TxModel';
 export class VPendingComponent implements OnInit {
 
   @Input() transaction: TxModel;
-  constructor() { }
-
+  constructor(private userService: UserService) { }
+  LoggedUser = this.userService.LoggedUser;
+  isLogged:boolean = this.userService.isLogged;
   ngOnInit(): void {
   }
   deletionHandler(){

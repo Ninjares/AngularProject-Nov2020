@@ -1,0 +1,19 @@
+.mainC{
+    display: flex;
+    flex-direction: row;
+}
+.welcomingMessage{
+    flex-grow: 1;
+    max-width: 50%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+}
+.controlPanel{
+    flex-grow: 1;
+    max-width: 50%;
+    margin: 5em;
+}
+.transactions{
+    padding: 0px;
+}

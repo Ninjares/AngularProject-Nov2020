@@ -1,5 +1,12 @@
-<h1>{{transaction.title}}</h1>
-<h3>by {{transaction.publisherUsername}}</h3>
-<img src="{{transaction.imageUrl}}">
-<p>{{transaction.Description}}</p>
-<button (click)="purchase()">Purchase ${{transaction.price}}</button>
+<div class="container">
+    <img src="{{transaction.imageUrl}}">
+    <div class="title">
+        <h1>{{transaction.title}}</h1>
+        <h3>by {{transaction.publisherUsername}}</h3>
+    </div>
+    <p>{{transaction.description}}</p>
+    <div class="buttons">
+        <button (click)="purchase()">Purchase ${{transaction.price}}</button>
+        <button>Cancel</button>
+    </div>
+</div>

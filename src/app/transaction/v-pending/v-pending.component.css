@@ -12,17 +12,18 @@ img{
 }
 .imgContainer{
     display: flex;
-    width: 30vw;
-    height: 30vw;
+    width: 50vw;
+    height: 50vw;
     object-fit: cover;
     max-width: 300px;
     max-height: 300px;
     margin: 0em 1em 0em 0em;
 }
 .details{
-    flex-grow: 1;
     display: flex;
     flex-direction: column;
+    max-width: 70%;
+    flex-grow: 1;
 }
 .top{
     display: flex;
@@ -39,9 +40,31 @@ img{
     flex-direction: row;
     justify-content: flex-end;
 }
-.bottom *{
-    margin-left: 1em;
-}
+
 h2{
     margin: 0px;
+}
+.buysection{
+    background-color: rgb(188, 238, 184);
+    border-radius: calc(1vh + 0.6em);
+    display: flex;
+    flex-direction: row;
+}
+.buysection a{
+    background-color: rgb(105, 194, 117);
+}
+.buysection>*{
+    padding:0.6em
+}
+.btn{
+    border-radius: calc(1vh + 0.6em);
+    padding: 0.6em;
+}
+.edit{
+    background: rgb(70, 186, 231);
+    margin-left: 1em;
+}
+.delete{
+    background: rgb(255, 126, 126);
+    margin-left: 0.2em;
 }

@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { TxService } from '../transaction/tx.service';
 import { map } from 'rxjs/operators'
 import { TxComplete } from '../transaction/models/TxCModel';
+import { UserService } from '../services/user.service';
 @Component({
   selector: 'app-homepage',
   templateUrl: './homepage.component.html',
@@ -9,7 +10,7 @@ import { TxComplete } from '../transaction/models/TxCModel';
 })
 export class HomepageComponent implements OnInit {
 
-  constructor(private txService: TxService) { }
+  constructor(private txService: TxService, public userService:UserService) { }
   transactions:TxComplete[]
   ngOnInit(): void {
     this.txService.getCompletedTxs().pipe(map(x => x.slice(0,5))).subscribe(
