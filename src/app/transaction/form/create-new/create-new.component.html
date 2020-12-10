@@ -1,20 +1,24 @@
-<form #f="ngForm" class="register" (ngSubmit)="submissionHandler(f.value)">
+<form [formGroup]="form" class="register" (ngSubmit)="submissionHandler()">
     <div class="form-group">
         <label for="title">Title</label>
-        <input #title="ngModel" ngModel type="title" class="form-control" placeholder="Headphones" name="title" value="" required>
+        <input type="title" class="form-control" placeholder="Headphones" name="title" value="" formControlName="title">
+        <p *ngIf="form.get('title').touched && form.get('title').errors?.required" class="error">Title is required!</p>
     </div>
     <div class="form-group">
       <label for="imageUrl">Image Url</label>
-      <input #imageUrl="ngModel" ngModel type="imageUrl" class="form-control" placeholder="http://.." name="imageUrl" value="">
+      <input type="imageUrl" class="form-control" placeholder="https://.." name="imageUrl" value="" formControlName="imageUrl">
+      <p *ngIf="form.get('imageUrl').touched && form.get('imageUrl').errors?.pattern" class="error">Please use a valid URL!</p>
     </div>
     <div class="form-group">
       <label for="price">Price USD</label>
-      <input #price="ngModel" ngModel type="price" class="form-control" placeholder="0.00" name="price" value="" required pattern="[\d]*([.][\d]{2})?">
+      <input type="price" class="form-control" placeholder="0.00" name="price" value="" formControlName="price">
+      <p *ngIf="form.get('price').touched && form.get('price').errors?.required" class="error">Price is required!</p>
+      <p *ngIf="form.get('price').touched && form.get('price').errors?.pattern" class="error">Please input a valid price!</p>
     </div>
     <div class="form-group">
       <label for="description">Description</label>
-      <input #description="ngModel" ngModel type="description" class="form-control" placeholder="This product is.." name="description" value="">
+      <!-- <input type="textarea" class="form-control" placeholder="This product is.." name="description" value="" formControlName="description"> -->
+      <textarea style="resize: vertical; min-height: 4em; height: 6em;"placeholder="This product is.." formControlName="description"></textarea>
     </div>
-  
-    <button type="submit" class="btn btn-primary">Add to catalog</button>
+    <button [disabled]="form.invalid" type="submit" class="btn btn-primary">Add to catalog</button>
 </form>

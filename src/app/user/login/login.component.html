@@ -9,6 +9,6 @@
         <input #password ="ngModel"ngModel type="password" class="form-control" placeholder="Password" name="password" value="" required>
         <p *ngIf="password.touched&&password.value.length==0" class="input-error">Password Required</p>
     </div>
-    <button type="submit" class="btn btn-primary">Login</button>
+    <button type="submit" [disabled]="password.value.length==0 || username.value.length==0" >Login</button>
     <p class="errorMessage" *ngIf="showErrorMessage">{{errorMessage}}</p>
 </form>

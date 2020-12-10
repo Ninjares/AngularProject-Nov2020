@@ -1,4 +1,4 @@
-<form [formGroup]='form' class="register" (ngSubmit)="registrationHandle()">
+<form [formGroup]='form' class="register" (ngSubmit)="registrationHandler()">
     <!-- formControlName required by angular -->
     <div class="form-group">
         <label for="username">Username</label>
@@ -30,4 +30,5 @@
         <p *ngIf="form.get('repeatPassword').touched && form.get('repeatPassword').errors?.rePasswordValidator" class="error">Passwords do not match</p>
     </div>
     <button [disabled]="false ||form.invalid">Register</button>
+    <p class="errorMessage" *ngIf="showErrorMessage">{{errorMessage}}</p>
 </form>

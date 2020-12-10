@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { TxService } from '../../tx.service';
 
 @Component({
@@ -8,12 +9,20 @@ import { TxService } from '../../tx.service';
 })
 export class CreateNewComponent implements OnInit {
 
-  constructor(private txService: TxService) { }
+  form: FormGroup;
+  constructor(private txService: TxService, private formBuilder: FormBuilder) {
+    this.form = this.formBuilder.group({
+      title: ['',[Validators.required]],
+      imageUrl: ['',[Validators.pattern('(https?://)?([\\da-z.-]+)\\.([a-z.]{2,6})[/\\w .-]*/?')]],
+      price: ['',[Validators.required, Validators.pattern('[0-9]*([.][0-9]{1,2})?')]],
+      description: ['',[]],
+    })
+  }
 
   ngOnInit(): void {
   }
-  submissionHandler(data){
-    this.txService.createTx(data).subscribe(
+  submissionHandler(){
+    this.txService.createTx(this.form.value).subscribe(
       (success) => {
         console.log(success)
       },

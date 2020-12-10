@@ -11,7 +11,11 @@ import { rePasswordValidatorFactory } from 'src/app/services/validators';
 })
 export class RegisterComponent implements OnInit {
 
+  errorMessage:string = "N/A";
+  showErrorMessage:boolean = false;
+
   form: FormGroup;
+
   constructor(private userService: UserService, private router: Router, private fb:FormBuilder) { 
      const passwordControl = this.fb.control('', [Validators.required, Validators.minLength(6)]);
      this.form = this.fb.group({
@@ -41,13 +45,21 @@ export class RegisterComponent implements OnInit {
           this.router.navigate(['user/login'])
         },
         (error)=> {
-          console.error(error.message);
+          this.displayErrorMessage(error.message);
         })
       },
       (error) => { 
-        console.error(error.message);
+        this.displayErrorMessage(error.message);
       }
     );
+  }
+  private displayErrorMessage(msg):void{
+    this.showErrorMessage = true;
+    this.errorMessage = msg;
+    console.error(msg);
+    setTimeout(() => {
+      this.showErrorMessage = false;
+    },3000);
   }
 
 }

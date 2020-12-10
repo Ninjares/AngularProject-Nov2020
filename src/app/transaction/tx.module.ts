@@ -5,7 +5,7 @@ import { LiPendingComponent } from './li-pending/li-pending.component';
 import { CreateNewComponent } from './form/create-new/create-new.component';
 import { EditComponent } from './form/edit/edit.component';
 import { TxRoutingModule } from './TxRouting';
-import { FormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { VPendingComponent } from './v-pending/v-pending.component';
 import { TxCompleteComponent } from './tx-complete/tx-complete.component';
 import { LiCompleteComponent } from './li-complete/li-complete.component';
@@ -24,7 +24,8 @@ import { VCompleteComponent } from './v-complete/v-complete.component';
   imports: [
     CommonModule,
     TxRoutingModule,
-    FormsModule
+    FormsModule,
+    ReactiveFormsModule
   ],
   providers:[
     TxService

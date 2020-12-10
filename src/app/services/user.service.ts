@@ -19,7 +19,7 @@ export class UserService {
   }
   register(userData):Observable<any>{
     return this.fb.getUser(userData.username).pipe(map(user => {
-      if(user!=null) throw new Error('User already exists');
+      if(user!=null) throw new Error('Username already taken');
       //add various other checks
       else return this.fb.registerUser(userData)
     }))
@@ -27,8 +27,8 @@ export class UserService {
   }
   login(username:string, password:string):Observable<any>{
     return this.fb.getUser(username).pipe(map(user => {
-      if(user==null) throw new Error('User doesn\'t exist');
-      else if(user.password != password) throw new Error('Wrong password');
+      if(user==null) throw new Error('Wrong username/password'); //no such user
+      else if(user.password != password) throw new Error('Wrong username/password'); //wrong password
       else{
         this.storage.setItem('currentlyLogged', username);
       }
