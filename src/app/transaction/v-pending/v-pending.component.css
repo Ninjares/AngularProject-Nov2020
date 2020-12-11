@@ -69,3 +69,6 @@ h2{
     background: rgb(255, 126, 126);
     margin-left: 0.2em;
 }
+a{
+    text-decoration: unset;
+}

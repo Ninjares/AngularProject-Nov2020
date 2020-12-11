@@ -10,13 +10,13 @@ import { SrvRecord } from 'dns';
 export class UserpageService {
 
   
-  constructor(private userService: UserService, private tx: TxService) { 
+  constructor(private tx: TxService) { 
 
   }
-  getOpenTxs(){
-    return this.tx.getPendingTxs().pipe(map(arr => arr.filter(x => x.publisherUsername == this.userService.LoggedUser)));
+  getOpenTxs(userId){
+    return this.tx.getPendingTxs().pipe(map(arr => arr.filter(x => x.publisherUsername == userId)));
   }
-  getCompletedTxs(){
-    return this.tx.getCompletedTxs().pipe(map(arr => arr.filter(x => x.buyer == this.userService.LoggedUser || x.seller == this.userService.LoggedUser)))
+  getCompletedTxs(userId){
+    return this.tx.getCompletedTxs().pipe(map(arr => arr.filter(x => x.buyer == userId || x.seller == userId)))
   }
 }

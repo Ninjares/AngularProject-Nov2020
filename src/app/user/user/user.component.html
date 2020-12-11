@@ -1,18 +1,35 @@
 <div class="container">
     <div class='userSection'>
-        <h2>Username</h2>
+        <h2>{{user.username}}</h2>
+        <img src="{{profilePic}}">
+        <h3>Contacts</h3>
+        <div class="userContact">
+            <p><span>Phone:</span> {{user.phoneNumber}}</p>
+            <button *ngIf="user.username===this.userService.LoggedUser">Edit</button>
+        </div>
+        <div class="userContact">
+            <p><span>Email:</span> {{user.email}}</p>
+            <button *ngIf="user.username===this.userService.LoggedUser">Edit</button>
+        </div>
+        <div class="userContact" style="margin-top: 1.5em;" *ngIf="user.username===this.userService.LoggedUser">
+            <p><span>Funds:</span> ${{user.USD}}</p>
+            <div>
+                <button>Deposit</button>
+                <button>Withdraw</button>
+            </div>
+        </div>
     </div>
     <hr>
     <div class="TxSection">
         <div class='openTx'>
             <h3>Open Transactions</h3>
-            <ul>
+            <ul type='none'>
                 <app-li-pending *ngFor="let t of pendingTxs" [transaction]="t"></app-li-pending>
             </ul>
         </div>
         <div class='CompletedTx'>
             <h3>Completed Transactions</h3>
-            <ul>
+            <ul type='none'>
                 <app-li-complete *ngFor="let t of completeTxs" [transaction]="t"></app-li-complete>
             </ul>
         </div>

@@ -1,6 +1,7 @@
 .mainC{
     display: flex;
     flex-direction: row;
+    min-height: 40vh;
 }
 .welcomingMessage{
     flex-grow: 1;
@@ -12,8 +13,52 @@
 .controlPanel{
     flex-grow: 1;
     max-width: 50%;
-    margin: 5em;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
 }
 .transactions{
     padding: 0px;
+}
+.cpContainer{
+    max-width: 60%;
+    justify-self: center;
+    align-self: center;
+    justify-content: center;
+    display: flex;
+    flex-direction: column;
+    padding: 1em;
+    border-radius: 1em;
+    border: 1px solid grey;
+    align-items: center;
+    background-color: white;
+}
+.cpContainer>a{
+    border-radius: calc(3vh);
+    background-color: rgb(52, 98, 158);
+    color: white;
+    padding: 0.6em;
+}
+.lgoutContent, .lgInContent{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+.lgoutContent>a{
+    border-radius: calc(3vh);
+    background-color: rgb(52, 146, 158);
+    color: white;
+    padding: 0.6em;
+}
+.lgInContent>a{
+    border-radius: calc(3vh);
+    background-color: rgb(52, 146, 158);
+    color: white;
+    padding: 0.6em;
+}
+a{
+    text-decoration: unset;
+}
+.register{
+    font-weight: bold;
 }

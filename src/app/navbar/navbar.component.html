@@ -5,7 +5,7 @@
       <li><a href="user/login">Login</a></li>
     </ul>
     <ul type="none" *ngIf="userService.isLogged">
-      <li>Welcome, <a href="user/{{Username}}">{{Username}}</a></li>
-      <li><a (click)="logoutHandler()">Logout</a></li>
+      <li>Welcome, <a class="username" href="user/{{Username}}">{{Username}}</a></li>
+      <li><a class="logout" (click)="logoutHandler()">Logout</a></li>
     </ul>
   </nav>

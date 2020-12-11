@@ -7,12 +7,19 @@
     </div>
     <hr>
     <div class="controlPanel">
-            <div *ngIf="!userService.isLogged">
-                <p>Already a user?</p>
+        <div class="cpContainer">
+            <div class="lgoutContent" *ngIf="!userService.isLogged">
+                <p style="margin-top: 0px;">Already a user?</p>
                 <a href="user/login">Login</a>
-                <p>Want to explored before <a href="user/register">registering</a>?</p>
+                <p>Want to explored before <a class ="register" href="user/register">registering</a>?</p>
+            </div>
+            <div class="lgInContent" *ngIf="userService.isLogged">
+                <p style="margin-top: 0px;">Welcome back, {{this.userService.LoggedUser}}</p> 
+                <a href="user/{{this.userService.LoggedUser}}">Manage your profile</a>
+                <p>or</p>
             </div>
             <a href="/market">Go to market</a>
+        </div>
     </div>
 
 </div>

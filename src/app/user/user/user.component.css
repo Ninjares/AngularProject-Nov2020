@@ -6,11 +6,30 @@
 }
 .userSection{
     flex-grow: 1;
-    max-width: 30%;
+    max-width: 33%;
     margin-right: 1em;
+    display: flex;
+    flex-direction: column;
+}
+.userSection>img{
+    object-fit: cover;
 }
 .TxSection{
     margin-left: 2em;
     flex-grow: 2;
-    max-width: 70%;
+    max-width: 66%;
+}
+ul{
+    padding: 0px;
+}
+.userSection p{
+    margin: 5px 0px 5px 0px;
+}
+.userSection span{
+    font-weight: 600;
+}
+.userContact{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
 }
