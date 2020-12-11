@@ -1,5 +1,7 @@
 import { RouterModule, Routes } from '@angular/router';
+import { AuthGuard } from '../services/auth.guard';
 import { CreateNewComponent } from './form/create-new/create-new.component';
+import { EditGuard } from './form/edit.guard';
 import { EditComponent } from './form/edit/edit.component';
 import { TxCompleteComponent } from './tx-complete/tx-complete.component';
 const routes: Routes = [
@@ -8,7 +10,12 @@ const routes: Routes = [
         children: [
             {
                 path: 'create',
-                component: CreateNewComponent
+                component: CreateNewComponent,
+                canActivate: [AuthGuard],
+                data:{
+                    isLogged: true,
+                    redirectTo: 'user/login'
+                }
             },
             {
                 path: 'transact/:id',
@@ -16,7 +23,8 @@ const routes: Routes = [
             },
             {
                 path: 'edit/:id',
-                component: EditComponent
+                component: EditComponent,
+                canActivate: [EditGuard]
             }
         ]
     },
