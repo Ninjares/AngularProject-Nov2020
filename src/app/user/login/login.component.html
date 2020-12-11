@@ -11,4 +11,6 @@
     </div>
     <button type="submit" [disabled]="password.value.length==0 || username.value.length==0" >Login</button>
     <p class="errorMessage" *ngIf="showErrorMessage">{{errorMessage}}</p>
+    <p class="loadingMessage" *ngIf="showLoadingMessage">Loading...</p> 
+    <p class="successMessage" *ngIf="showSuccessMessage">{{successMessage}}</p> 
 </form>

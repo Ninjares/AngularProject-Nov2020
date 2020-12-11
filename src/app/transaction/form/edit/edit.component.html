@@ -20,8 +20,10 @@
       <label for="description">Description</label>
       <textarea style="resize: vertical; min-height: 4em; height: 6em;"placeholder="This product is.." formControlName="description"></textarea>
     </div>
-  
     <button [disabled]="form.invalid" type="submit" class="btn btn-primary">Update</button>
+    <p class="errorMessage" *ngIf="showErrorMessage">{{errorMessage}}</p>
+    <p class="loadingMessage" *ngIf="showLoadingMessage">Loading...</p> 
+    <p class="successMessage" *ngIf="showSuccessMessage">{{successMessage}}</p> 
 </form>
 
 <!-- <form #f="ngForm" class="register" (ngSubmit)="submissionHandler(f.value)">

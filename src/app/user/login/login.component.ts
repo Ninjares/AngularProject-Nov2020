@@ -11,6 +11,12 @@ export class LoginComponent implements OnInit {
 
   errorMessage:string = "N/A";
   showErrorMessage:boolean = false;
+
+  showLoadingMessage: boolean = false;
+
+  showSuccessMessage: boolean = false;
+  successMessage: string = "Success";
+
   constructor(private userService:UserService, private router: Router) { }
 
   ngOnInit(): void {
@@ -19,7 +25,13 @@ export class LoginComponent implements OnInit {
     this.userService.login(value.username, value.password).subscribe(
       (success) => { 
         console.log("Login Successful");
-        this.router.navigate(['']);
+        this.successMessage = "Login Successful!";
+        this.showLoadingMessage = false;
+        this.showSuccessMessage = true;
+        setTimeout(() => {
+          this.router.navigate([''])
+          this.showSuccessMessage = false;
+        },500);
       },
       (error) => { 
         this.showErrorMessage = true;

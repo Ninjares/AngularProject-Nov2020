@@ -1,7 +1,7 @@
 import { transition } from '@angular/animations';
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { transcode } from 'buffer';
 import { TxModel } from '../../models/TxModel';
 import { TxService } from '../../tx.service';
@@ -13,10 +13,18 @@ import { TxService } from '../../tx.service';
 })
 export class EditComponent implements OnInit {
 
+  errorMessage:string = "N/A";
+  showErrorMessage:boolean = false;
+
+  showLoadingMessage: boolean = false;
+
+  showSuccessMessage: boolean = false;
+  successMessage: string = "Success";
+
   itemId:string = this.activatedRoute.snapshot.params.id;
   transaction:TxModel;
   form:FormGroup;
-  constructor(private activatedRoute: ActivatedRoute, private txService: TxService, private formBuilder: FormBuilder) { 
+  constructor(private activatedRoute: ActivatedRoute, private txService: TxService, private formBuilder: FormBuilder, private router: Router) { 
     this.form = this.formBuilder.group({
       title: ['', [Validators.required]],
       imageUrl: ['', [Validators.pattern('(https?://)?([\\da-z.-]+)\\.([a-z.]{2,6})[/\\w .-]*/?')]],
@@ -35,21 +43,35 @@ export class EditComponent implements OnInit {
           price: this.transaction.price,
           description: this.transaction.description
         });
-        console.log(success);
       },
       (error) => {
-        console.error(error.message)
+        this.errorMessage = error.message;
+        this.showErrorMessage = true;
+        setTimeout(() => {
+          this.showErrorMessage = false;
+        },3000);
       }
     );
   }
   submissionHandler(){
+    this.showLoadingMessage = true;
     this.form.value['publisherUsername'] = this.transaction.publisherUsername;
     this.form.value['createdOn'] = this.transaction.createdOn; 
     this.txService.updateTx(this.itemId, this.form.value).subscribe(
       (success) => {
-        console.log(success);
+        this.successMessage = "Update successful!";
+        this.showLoadingMessage = false;
+        this.showSuccessMessage = true;
+        setTimeout(() => {
+          this.showSuccessMessage = false;
+          this.router.navigate(['market']);
+        },500);
       },(error) => { 
-        console.error(error.message)
+        this.errorMessage = error.message;
+        this.showErrorMessage = true;
+        setTimeout(() => {
+          this.showErrorMessage = false;
+        },3000)
       });
     }
   

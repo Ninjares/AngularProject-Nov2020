@@ -16,3 +16,24 @@ form{
     align-self: center;
     align-items: center;
 }
+
+.loadingMessage, .errorMessage, .successMessage{
+    text-align: center;
+    border: 2px solid;
+    color: white;
+    border-radius: 2em;
+    padding: 0.6em;
+    width: calc(30vw - 1.2em);
+}
+.loadingMessage{
+    background-color: rgb(70, 167, 206);
+    border-color: blue;
+}
+.successMessage{
+    background-color: rgb(97, 189, 88);
+    border-color: green;
+}
+.errorMessage{
+    background-color: rgb(255, 149, 149);
+    border-color: tomato;
+}

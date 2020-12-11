@@ -11,10 +11,12 @@ import { TxModel } from '../models/TxModel';
 export class VPendingComponent implements OnInit {
 
   @Input() transaction: TxModel;
+  imageUrl:string;
   constructor(private userService: UserService) { }
   LoggedUser = this.userService.LoggedUser;
   isLogged:boolean = this.userService.isLogged;
   ngOnInit(): void {
+    this.imageUrl = ( this.transaction.imageUrl == '' ? 'https://www.raceentry.com/img/Race-Registration-Image-Not-Found.png': this.transaction.imageUrl )
   }
   deletionHandler(){
     console.log('delete')

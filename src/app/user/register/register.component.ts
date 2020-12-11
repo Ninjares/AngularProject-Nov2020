@@ -14,6 +14,11 @@ export class RegisterComponent implements OnInit {
   errorMessage:string = "N/A";
   showErrorMessage:boolean = false;
 
+  showLoadingMessage: boolean = false;
+
+  showSuccessMessage: boolean = false;
+  successMessage: string = "Success";
+
   form: FormGroup;
 
   constructor(private userService: UserService, private router: Router, private fb:FormBuilder) { 
@@ -36,19 +41,26 @@ export class RegisterComponent implements OnInit {
    console.log(this.form.value);
   }
   registrationHandler(){
+    this.showLoadingMessage = true;
     this.userService.register(this.form.value).subscribe(
       (success) => { 
         console.log("Username is free");
         success.subscribe((success) => {
-          console.log('Registration Successful');
-          console.log(success);
-          this.router.navigate(['user/login'])
+          this.successMessage = "Registration Successful!";
+          this.showLoadingMessage = false;
+          this.showSuccessMessage = true;
+          setTimeout(() => {
+            this.router.navigate(['user/login'])
+            this.showSuccessMessage = false;
+          },500);
         },
         (error)=> {
+          this.showLoadingMessage = false;
           this.displayErrorMessage(error.message);
         })
       },
       (error) => { 
+        this.showLoadingMessage = false;
         this.displayErrorMessage(error.message);
       }
     );
