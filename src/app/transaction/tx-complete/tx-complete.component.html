@@ -2,11 +2,20 @@
     <img src="{{transaction.imageUrl}}">
     <div class="title">
         <h1>{{transaction.title}}</h1>
-        <h3>by {{transaction.publisherUsername}}</h3>
+        <h3>by <a href="user/{{transaction.publisherUsername}}">{{transaction.publisherUsername}}</a></h3>
     </div>
     <p>{{transaction.description}}</p>
-    <div class="buttons">
-        <button (click)="purchase()">Purchase ${{transaction.price}}</button>
-        <button>Cancel</button>
+    <p class="message"></p>
+    <div class="buttons" *ngIf="buyerFunds>=transaction.price&&showMainQuery">
+        <a class="purchase" (click)="showPurchase()">Purchase ${{transaction.price}}</a>
+        <a class="toMarket" href="/market">Back to market</a>
     </div>
+    <div class="purchaseQuery" *ngIf="showPurchaseQuery">
+        <p style="margin: 0px; padding: 0.6em; flex-grow: 4;">After purchase you will be left with: ${{buyerFunds}} - ${{transaction.price}} = {{buyerFunds-transaction.price}}</p>
+        <a class="yes" (click)="purchase()">Buy</a>
+        <a class="no" (click)="showPurchase()">Cancel</a>
+    </div>
+    <p class="errorMessage" *ngIf="showErrorMessage">{{errorMessage}}</p>
+    <p class="loadingMessage" *ngIf="showLoadingMessage">Loading...</p> 
+    <p class="successMessage" *ngIf="showSuccessMessage">{{successMessage}}</p> 
 </div>
