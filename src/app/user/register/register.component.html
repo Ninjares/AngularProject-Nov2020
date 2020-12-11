@@ -19,10 +19,17 @@
     <div class="form-group">
         <label for="phoneNumber">Phone Number</label>
         <input type="phoneNumber" class="form-control" 
-        [class.error-form]="form.get('phoneNumber').touched && (form.get('phoneNumber').errors?.required || form.get('phoneNumber').touched && form.get('phoneNumber').errors?.pattern)"
-        placeholder="Phone Number" name="phoneNumber" value="" formControlName="phoneNumber">
+        [class.error-form]="form.get('phoneNumber').touched && (form.get('phoneNumber').errors?.required || form.get('phoneNumber').errors?.pattern)"
+        placeholder="0888.." name="phoneNumber" value="" formControlName="phoneNumber">
         <p *ngIf="form.get('phoneNumber').touched && form.get('phoneNumber').errors?.required" class="error">Phone number is required!</p>
         <p *ngIf="form.get('phoneNumber').touched && form.get('phoneNumber').errors?.pattern" class="error">Invalid input!</p>
+    </div>
+    <div class="form-group">
+        <label for="profilePicUrl">Profile Pic Url</label>
+        <input type="profilePicUrl" class="form-control" 
+        [class.error-form]="form.get('profilePicUrl').touched && form.get('profilePicUrl').errors?.pattern"
+        placeholder="https://..." name="profilePicUrl" value="" formControlName="profilePicUrl">
+        <p *ngIf="form.get('profilePicUrl').touched && form.get('profilePicUrl').errors?.pattern" class="error">Invalid input!</p>
     </div>
     <div class="form-group">
         <label for="password">Password</label>

@@ -17,6 +17,7 @@ export class FirebaseService {
         phoneNumber: userdata.phoneNumber,
         password: userdata.password,
         USD: 1000,
+        profilePicUrl: userdata.profilePicUrl
     });
   }
   getUser(username):Observable<any>{

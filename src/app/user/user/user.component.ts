@@ -37,7 +37,7 @@ export class UserComponent implements OnInit {
     })
     this.userService.getUser(this.activatedRoute.snapshot.params.id).subscribe((success) => {
       this.user = success;
-      this.profilePic = "https://www.salesman.org/wp-content/uploads/2015/05/suit-hacks-for-salesmen.jpg"//'https://www.raceentry.com/img/Race-Registration-Image-Not-Found.png';
+      this.profilePic = (this.user.profilePicUrl == '' ? 'https://www.raceentry.com/img/Race-Registration-Image-Not-Found.png' : this.user.profilePicUrl);
     },
     (error) => {
       console.error(error.message);

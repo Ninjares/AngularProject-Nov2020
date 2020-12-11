@@ -22,7 +22,7 @@ export class CreateNewComponent implements OnInit {
   constructor(private txService: TxService, private formBuilder: FormBuilder, private router: Router) {
     this.form = this.formBuilder.group({
       title: ['',[Validators.required]],
-      imageUrl: ['',[Validators.pattern('(https?://)?([\\da-z.-]+)\\.([a-z.]{2,6})[/\\w .-]*/?')]],
+      imageUrl: ['',[Validators.pattern('(https?:\/\/)?([\\da-z.-]+)\/([\/a-zA-Z0-9%-.]*)')]],
       price: ['',[Validators.required, Validators.pattern('[0-9]*([.][0-9]{1,2})?')]],
       description: ['',[]],
     })

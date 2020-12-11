@@ -27,6 +27,7 @@ export class RegisterComponent implements OnInit {
        username: ['', [Validators.required, Validators.minLength(4)]],
        email: ['', [Validators.required, Validators.pattern('[a-zA-Z0-9]+[@][a-zA-Z0-9]+[.][a-zA-Z]{2,3}')]],
        phoneNumber: ['',[Validators.required, Validators.pattern('[+]?[0-9]*')]],
+       profilePicUrl: ['', [Validators.pattern('(https?:\/\/)?([\\da-z.-]+)\/([\/a-zA-Z0-9%-.]*)')]],
        password: passwordControl,
        repeatPassword: ['',[rePasswordValidatorFactory(passwordControl)]] //don't forget that this returns a validator
      })
