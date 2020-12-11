@@ -37,3 +37,27 @@ form{
     background-color: rgb(255, 149, 149);
     border-color: tomato;
 }
+.form-control{
+    padding: 0.4em;
+    font-size: 0.9em;
+    border-radius: calc(2vh);
+    box-shadow: 0px 0px 17px -5px rgba(0,0,0,0.48);
+    margin-top: 0.4em;
+    margin-bottom: 0.4em;
+}
+.error-form{
+    box-shadow: 0px 0px 20px 5px rgba(255, 105, 105, 0.603);
+    border-color: tomato;
+}
+p{
+    text-align: center;
+    color: rgb(160, 55, 55);
+    font-weight: 600;
+}
+textarea{
+    border-radius: calc(1.2em);
+    padding: 0.5em;
+    box-shadow: 0px 0px 17px -5px rgba(0,0,0,0.48);
+    margin-top: 0.4em;
+    margin-bottom: 0.6em;
+}

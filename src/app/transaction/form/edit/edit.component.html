@@ -2,17 +2,23 @@
 <form [formGroup]="form" class="register" (ngSubmit)="submissionHandler()">
     <div class="form-group">
       <label for="title">Title </label>
-      <input type="text" class="form-control" placeholder="Smartphone X" name="title" value="" formControlName="title">
+      <input type="text" class="form-control" 
+      [class.error-form]="form.get('title').touched && form.get('title').errors?.required"
+      placeholder="Smartphone X" name="title" value="" formControlName="title">
       <p *ngIf="form.get('title').touched && form.get('title').errors?.required" class="error">Title is required!</p>
     </div>
     <div class="form-group">
       <label for="imageUrl">Image Url</label>
-      <input type="text" class="form-control" placeholder="https://.." name="imageUrl" value="" formControlName="imageUrl">
+      <input type="text" class="form-control" 
+      [class.error-form]="form.get('imageUrl').touched && form.get('imageUrl').errors?.pattern"
+      placeholder="https://.." name="imageUrl" value="" formControlName="imageUrl">
       <p *ngIf="form.get('imageUrl').touched && form.get('imageUrl').errors?.pattern" class="error">Please use a valid URL!</p>
     </div>
     <div class="form-group">
       <label for="price">Price USD</label>
-      <input type="text" class="form-control" placeholder="0.00" name="price" value="" formControlName="price">
+      <input type="text" class="form-control" 
+      [class.error-form]="form.get('price').touched && (form.get('price').errors?.required || form.get('price').errors?.pattern)"
+      placeholder="0.00" name="price" value="" formControlName="price">
       <p *ngIf="form.get('price').touched && form.get('price').errors?.required" class="error">Price is required!</p>
       <p *ngIf="form.get('price').touched && form.get('price').errors?.pattern" class="error">Please input a valid price!</p>
     </div>
