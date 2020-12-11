@@ -20,8 +20,12 @@ export class EditGuard implements CanActivate {
   {
     if(this.userService.isLogged){
      let isOwner:boolean = false
-     return this.tx.getPendingTx(route.params['id']).pipe(map(x => x.publisherUsername)).toPromise().then((username) => {
-        isOwner = username == this.userService.LoggedUser;
+     return this.tx.getPendingTx(route.params['id']).toPromise().then((txData) => {
+        if(txData == null){
+          this.router.navigate(['404']);
+          return false;
+        }
+        isOwner = txData.publisherUsername == this.userService.LoggedUser;
         if(isOwner) return isOwner;
         else {
           this.router.navigate(['404']);

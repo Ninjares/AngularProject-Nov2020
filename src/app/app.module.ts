@@ -22,6 +22,7 @@ import { EditComponent } from './transaction/form/edit/edit.component';
 import { TxRoutingModule } from './transaction/TxRouting';
 import { TxModule } from './transaction/tx.module';
 import { UserModule } from './user/user.module';
+import { E404Component } from './e404/e404.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -29,6 +30,7 @@ import { UserModule } from './user/user.module';
     FooterComponent,
     HomepageComponent,
     HomeLoggedInComponent,
+    E404Component,
   ],
   imports: [
     BrowserModule,

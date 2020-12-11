@@ -37,7 +37,12 @@ export class UserService {
   logout(){
     this.storage.removeItem('currentlyLogged');
   }
-
+  getUser(username){
+    return this.fb.getUser(username).pipe(map(x => {
+      if(x!=null) x.username=username;
+      return x;
+    }));
+  }
 
 
 
