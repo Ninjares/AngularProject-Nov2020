@@ -1,4 +1,4 @@
-<li>
+<li [class.first]="transaction.pos==1" [class.last]="transaction.pos==-1" [class.odd]="transaction.odd" [class.even]="!transaction.odd">
     <div class="listing">
         <div class="left">
             <p>{{transaction.seller}}</p>

@@ -35,7 +35,12 @@ export class UserComponent implements OnInit {
     });
     this.userpage.getCompletedTxs(this.activatedRoute.snapshot.params.id).subscribe((success) => {
       this.completeTxs = success;
-      console.log(success)
+      for(let i=0; i<this.completeTxs.length; i++){
+        this.completeTxs[i].odd = i%2==0;
+        this.completeTxs[i].pos = 0;
+      }
+      this.completeTxs[0].pos = 1;
+      this.completeTxs[this.completeTxs.length-1].pos = -1;
     },
     (error) => {
       console.error(error.message);

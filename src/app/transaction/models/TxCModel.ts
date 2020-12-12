@@ -7,4 +7,6 @@ export interface TxComplete{
     seller: string;
     description: string;
     purchasedOn: Date;
+    pos: number;
+    odd: boolean;
 }
