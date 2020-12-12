@@ -38,7 +38,7 @@
     </div>
     <hr>
     <div class="TxSection">
-        <div class='openTx'>
+        <div class='openTx'  *ngIf="this.pendingTxs.length!=0">
             <h3>Open Transactions</h3>
             <ul type='none'>
                 <li>
@@ -50,7 +50,8 @@
                 <app-li-pending *ngFor="let t of pendingTxs" [transaction]="t" (refreshpage)="ngOnInit()"></app-li-pending>
             </ul>
         </div>
-        <div class='CompletedTx'>
+        <h1 *ngIf="this.pendingTxs.length==0">No Open Transactions</h1>
+        <div class='CompletedTx' *ngIf="this.completeTxs.length!=0">
             <h3>Completed Transactions</h3>
             <ul type='none'>
                 <li>
@@ -67,5 +68,6 @@
                 <app-li-complete *ngFor="let t of completeTxs" [transaction]="t"></app-li-complete>
             </ul>
         </div>
+        <h1 *ngIf="this.completeTxs.length==0">No Transaction Engaged</h1>
     </div>
 </div>

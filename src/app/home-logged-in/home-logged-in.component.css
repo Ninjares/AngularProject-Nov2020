@@ -9,9 +9,12 @@ a{
     padding: 0.5em;
     border-radius: calc(1vh + 1em);
     border: 1px solid #444;
+    align-self: center;
 }
 .container{
     margin-top: 4em;
+    display: flex;
+    flex-direction: column;
 }
 li{
     display: flex;
@@ -26,4 +29,15 @@ li>span{
 li>div{
     flex-grow: 0;
     width: 68px;
+}
+h1,h2{
+    text-align: center;
+}
+h1{
+    font-size: 48px;
+    color: gray;
+}
+h2{
+    font-size: 30px;
+    color: rgb(177, 177, 177);
 }

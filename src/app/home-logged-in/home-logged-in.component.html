@@ -1,12 +1,16 @@
 <div class="container">
     <a href="/tx/create">Create new Transaction</a>
-    <ul type="none">
-        <li>
-            <span>Product</span>
-            <span>Seller</span>
-            <span>Price</span>
-            <div></div>
-        </li>
-        <app-li-pending *ngFor="let t of transactions" [transaction]="t" (refreshpage)="ngOnInit()"></app-li-pending>
-    </ul>
+    <div *ngIf="this.transactions.length!=0">
+        <ul type="none">
+            <li>
+                <span>Product</span>
+                <span>Seller</span>
+                <span>Price</span>
+                <div></div>
+            </li>
+            <app-li-pending *ngFor="let t of transactions" [transaction]="t" (refreshpage)="ngOnInit()"></app-li-pending>
+        </ul>
+    </div>
+    <h1 *ngIf="this.transactions.length==0">No open transactions</h1>
+    <h2 *ngIf="this.transactions.length==0">Why not be the first?</h2>
 </div>

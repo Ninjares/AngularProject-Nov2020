@@ -23,15 +23,18 @@
     </div>
 
 </div>
-<h3>Last 5 transactions</h3>
-<ul class="transactions" type="none">
-    <li>
-        <span>Seller</span>
-        <span>Product</span>
-        <a style="width: 21px;"></a>
-        <span style="text-align: right;">Price</span>
-        <span style="text-align: right;">Buyer</span>
-        <div></div>
-    </li>
-    <app-li-complete *ngFor="let t of transactions" [transaction]="t"></app-li-complete>
-</ul>
+<div *ngIf="this.transactions.length!=0">
+    <h3>Last 5 transactions</h3>
+    <ul class="transactions" type="none">
+        <li>
+            <span>Seller</span>
+            <span>Product</span>
+            <a style="width: 21px;"></a>
+            <span style="text-align: right;">Price</span>
+            <span style="text-align: right;">Buyer</span>
+            <div></div>
+        </li>
+        <app-li-complete *ngFor="let t of transactions" [transaction]="t"></app-li-complete>
+    </ul>
+</div>
+<h1 *ngIf="this.transactions.length==0" style="text-align: center; font-size: 48px; color: gray;"> No transaction history found</h1>
