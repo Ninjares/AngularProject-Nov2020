@@ -23,13 +23,18 @@
         [initialValue]="this.user.email"
         (closeForm)="toggleEmailForm()"
         (submitter)="emailFormSubmit($event)"></app-single-form>
-        <div class="userContact" style="margin-top: 1.5em;" *ngIf="user.username===this.userService.LoggedUser">
+        <div class="userContact" style="margin-top: 1.5em;" *ngIf="user.username===this.userService.LoggedUser && !showFundsForm">
             <p><span>Funds:</span> ${{user.USD}}</p>
             <div>
-                <button>Deposit</button>
-                <button>Withdraw</button>
+                <button (click)="toggleFundsForm(); DorW = 1">Deposit</button>
+                <button (click)="toggleFundsForm(); DorW = -1">Withdraw</button>
             </div>
         </div>
+        <app-single-form style="margin-top: 1.5em;" *ngIf="showFundsForm" 
+        [validator]="fundsValidator" 
+        [placeholder]="'0.00'"
+        (closeForm)="toggleFundsForm()"
+        (submitter)="fundsFormSubmit($event)"></app-single-form>
     </div>
     <hr>
     <div class="TxSection">

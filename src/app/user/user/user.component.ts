@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Validators } from '@angular/forms';
 import { ActivatedRoute } from '@angular/router';
+import { FirebaseService } from 'src/app/services/firebase.service';
 import { UserService } from 'src/app/services/user.service';
 import { TxComplete } from 'src/app/transaction/models/TxCModel';
 import { TxModel } from 'src/app/transaction/models/TxModel';
@@ -13,7 +14,7 @@ import { UserpageService } from '../userpage.service';
 })
 export class UserComponent implements OnInit {
 
-  constructor(private userpage: UserpageService, private activatedRoute: ActivatedRoute, public userService: UserService) { }
+  constructor(private userpage: UserpageService, private activatedRoute: ActivatedRoute, public userService: UserService, private fb: FirebaseService) { }
 
 
   pendingTxs: TxModel[];
@@ -65,8 +66,14 @@ export class UserComponent implements OnInit {
     this.showPhoneForm = !this.showPhoneForm
   }
   phoneFormSubmit(value){
-    console.log('phone: ' + value);
-    this.togglePhoneForm();
+    console.log(value);
+    this.fb.updatePhone(this.user.username, `${value}`).subscribe((success)=>{
+      this.loadUser();
+      this.togglePhoneForm();
+    },
+    (error)=>{
+      console.error(error.message);
+    })
   }
 
   showEmailForm: boolean = false;
@@ -75,7 +82,27 @@ export class UserComponent implements OnInit {
     this.showEmailForm = !this.showEmailForm
   }
   emailFormSubmit(value){
-    console.log('email: '+value)
-    this.toggleEmailForm();
+    this.fb.updateEmail(this.user.username, value).subscribe((success)=>{
+      this.loadUser();
+      this.toggleEmailForm();
+    },
+    (error)=>{
+      console.error(error.message);
+    })
+  }
+
+  DorW:number = 0;
+  showFundsForm: boolean = false;
+  fundsValidator = [Validators.required, Validators.pattern('[0-9]*([.][0-9]{1,2})?')]
+  toggleFundsForm(){
+    this.showFundsForm = !this.showFundsForm
+  }
+  fundsFormSubmit(value){
+    if(this.DorW==1) this.fb.updateFunds(this.user.username, value);
+    if(this.DorW==-1) this.fb.updateFunds(this.user.username, -value);
+    setTimeout(() =>{
+      this.loadUser();
+      this.toggleFundsForm();
+    },800)
   }
 }

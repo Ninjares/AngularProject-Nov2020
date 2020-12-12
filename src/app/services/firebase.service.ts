@@ -1,5 +1,6 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
+import { emit } from 'process';
 import { Observable } from 'rxjs';
 import { environment } from 'src/environments/environment';
 
@@ -44,6 +45,13 @@ export class FirebaseService {
   getCompletedTxs(){
     return this.http.get<[]>(`${apiUrl}/completedTransactions/.json`);
   }
+  updatePhone(id, phone){
+    return this.http.put<string>(`${apiUrl}/users/${id}/phoneNumber.json`, phone);
+  }
+  updateEmail(id, email){
+    return this.http.put(`${apiUrl}/users/${id}/email.json`, email);
+  }
+
 
 
   updateFunds(username, sum){
