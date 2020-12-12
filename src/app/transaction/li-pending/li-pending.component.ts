@@ -13,7 +13,9 @@ export class LiPendingComponent implements OnInit {
   constructor() { }
   ngOnInit(): void {
   }
-
+  refresh(){
+    console.log('refreshing...');
+  }
   toggleDetails(){
     this.viewDetails = !this.viewDetails;
   }

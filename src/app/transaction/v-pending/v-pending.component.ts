@@ -1,5 +1,5 @@
 import { transition } from '@angular/animations';
-import { Component, Input, OnInit, Output } from '@angular/core';
+import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { Router } from '@angular/router';
 import { transcode } from 'buffer';
 import { UserService } from 'src/app/services/user.service';
@@ -15,7 +15,7 @@ export class VPendingComponent implements OnInit {
 
   @Input() transaction: TxModel;
   imageUrl:string;
-  @Output() refresh:boolean = false;
+  @Output() refresh = new EventEmitter();
   constructor(private userService: UserService, private txService: TxService, private router:Router) {
 
    }
@@ -31,8 +31,7 @@ export class VPendingComponent implements OnInit {
   }
   deletionHandler(){
      this.txService.deleteTx(this.transaction.id).subscribe((success) => {
-       console.log(this.router.url)
-       //this.router.navigate([this.router.url.toString()]);
+       this.refresh.emit();
      },
      (error) => {
        console.error(error.message);

@@ -5,5 +5,5 @@
         <p>$ {{transaction.price}}</p>
         <button (click)="toggleDetails()">Details</button>
     </div>
-    <app-v-pending *ngIf="viewDetails" [transaction]="transaction"></app-v-pending>
+    <app-v-pending *ngIf="viewDetails" [transaction]="transaction" (refresh)="refresh()"></app-v-pending>
 </li>
