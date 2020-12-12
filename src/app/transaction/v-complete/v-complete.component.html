@@ -1,9 +1,13 @@
 <div class='mainC'>
     <div class="imgContainer">
-        <img src="{{transaction.imageUrl}}">
+        <img src="{{imageUrl}}">
     </div>
     <div class='details'>
-        <h2>{{transaction.title}}</h2>
-        <p>{{transaction.description}}</p>
+        <div class="top">
+            <h2>{{transaction.title}}</h2>
+            <p>Seller: <a href="user/{{transaction.seller}}">{{transaction.seller}}</a></p>
+        </div>
+        <p class="desc">{{transaction.description}}</p>
     </div>
+    <div>
 </div>

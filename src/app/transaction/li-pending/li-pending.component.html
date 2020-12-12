@@ -3,7 +3,7 @@
         <p>{{transaction.title}}</p>
         <p>{{transaction.publisherUsername}}</p>
         <p>$ {{transaction.price}}</p>
-        <button (click)="toggleDetails()">Details</button>
+        <button [class.toggled]="viewDetails" (click)="toggleDetails()">Details</button>
     </div>
     <app-v-pending *ngIf="viewDetails" [transaction]="transaction" (refresh)="refresh()"></app-v-pending>
 </li>

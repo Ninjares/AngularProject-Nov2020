@@ -52,3 +52,12 @@ i{
     color: rgb(0, 126, 0);
     font-weight: bold;
 }
+button{
+    padding: 5px;
+    border-radius: 10px;
+    border: darkgray 1px solid;
+    box-shadow: inset 0px 0px 5px 0px rgba(255,255,255,1);
+}
+.toggled{
+    box-shadow: inset 0px 0px 5px 0px rgba(0,0,0,0.75);
+}

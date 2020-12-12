@@ -73,6 +73,7 @@ h2{
 }
 a{
     text-decoration: unset;
+    font-weight: bold;
 }
 .deleteConfirmation{
     display: flex;

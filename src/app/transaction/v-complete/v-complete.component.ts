@@ -9,9 +9,12 @@ import { TxComplete } from '../models/TxCModel';
 export class VCompleteComponent implements OnInit {
 
   @Input() transaction: TxComplete
+  date;
+  imageUrl:string;
   constructor() { }
 
   ngOnInit(): void {
+    this.imageUrl = ( this.transaction.imageUrl == '' ? 'https://www.raceentry.com/img/Race-Registration-Image-Not-Found.png': this.transaction.imageUrl );
   }
 
 }

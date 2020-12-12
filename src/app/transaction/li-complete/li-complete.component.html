@@ -12,7 +12,7 @@
             <p *ngIf="atUserPage">{{merchantField}}</p>
             <p *ngIf="!atUserPage">{{transaction.buyer}}</p>
         </div>
-        <button (click)="toggleDetails()">Details</button>
+        <button [class.toggled]="viewDetails" (click)="toggleDetails()">Details</button>
     </div>
     <app-v-complete *ngIf="viewDetails" [transaction]="transaction"></app-v-complete>
 </li>

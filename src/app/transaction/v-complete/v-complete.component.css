@@ -27,3 +27,10 @@ img{
     align-items: center;
     padding-right: 2em;
 }
+.desc{
+    flex-grow: 1;
+}
+a{
+    text-decoration: unset;
+    font-weight: bold;
+}
