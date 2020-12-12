@@ -1,4 +1,4 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { TxModel } from '../models/TxModel';
 
 @Component({
@@ -10,11 +10,12 @@ export class LiPendingComponent implements OnInit {
 
   viewDetails:boolean = false;
   @Input() transaction: TxModel;
+  @Output() refreshpage = new EventEmitter();
   constructor() { }
   ngOnInit(): void {
   }
   refresh(){
-    console.log('refreshing...');
+    this.refreshpage.emit();
   }
   toggleDetails(){
     this.viewDetails = !this.viewDetails;

@@ -24,7 +24,7 @@
         <div class='openTx'>
             <h3>Open Transactions</h3>
             <ul type='none'>
-                <app-li-pending *ngFor="let t of pendingTxs" [transaction]="t"></app-li-pending>
+                <app-li-pending *ngFor="let t of pendingTxs" [transaction]="t" (refreshpage)="ngOnInit()"></app-li-pending>
             </ul>
         </div>
         <div class='CompletedTx'>
