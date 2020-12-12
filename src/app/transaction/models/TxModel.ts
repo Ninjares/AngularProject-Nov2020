@@ -6,4 +6,6 @@ export interface TxModel {
     publisherUsername: string;
     description: string;
     createdOn: Date;
+    pos: number;
+    odd: boolean;
 }

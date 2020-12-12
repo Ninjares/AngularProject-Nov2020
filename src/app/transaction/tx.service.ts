@@ -47,13 +47,13 @@ export class TxService {
     return this.fb.updateTx(id, tx);
   }
   getPendingTxs(){
-    return this.fb.getPendingTransactions().pipe(map(x => {
-      return this.ObjectToArray(x);
+    return this.fb.getPendingTransactions().pipe().pipe(map(x => {
+      return this.ObjectToArray(x); //order by date
     }));
   }
   getCompletedTxs(){
-    return this.fb.getCompletedTxs().pipe(map(x => {
-      return this.ObjectToArray(x);
+    return this.fb.getCompletedTxs().pipe(map(x => {  
+      return this.ObjectToArray(x); //order by date
     }));
   }
   deleteTx(id){

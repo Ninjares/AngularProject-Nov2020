@@ -1,3 +1,4 @@
+import { transition } from '@angular/animations';
 import { Component, OnInit } from '@angular/core';
 import { error } from 'protractor';
 import { TxModel } from '../transaction/models/TxModel';
@@ -17,7 +18,12 @@ export class HomeLoggedInComponent implements OnInit {
     this.txService.getPendingTxs().subscribe(
       (success) => {
         this.transactions = success;
-        console.log(this.transactions);
+        for(let i=0; i<this.transactions.length; i++){
+          this.transactions[i].odd = i%2==0;
+          this.transactions[i].pos = 0;
+        }
+        this.transactions[0].pos = 1;
+        this.transactions[this.transactions.length-1].pos = -1;
       },
       (error) => {
         console.error(error.message)

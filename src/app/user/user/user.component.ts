@@ -23,7 +23,12 @@ export class UserComponent implements OnInit {
   ngOnInit(): void {
     this.userpage.getOpenTxs(this.activatedRoute.snapshot.params.id).subscribe((success) => {
       this.pendingTxs = success;
-      console.log(success);
+      for(let i=0; i<this.pendingTxs.length; i++){
+        this.pendingTxs[i].odd = i%2==0;
+        this.pendingTxs[i].pos = 0;
+      }
+      this.pendingTxs[0].pos = 1;
+      this.pendingTxs[this.pendingTxs.length-1].pos = -1;
     },
     (error) => {
       console.error(error.message);
