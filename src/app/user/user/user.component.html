@@ -3,14 +3,26 @@
         <h2>{{user.username}}</h2>
         <img src="{{profilePic}}">
         <h3>Contacts</h3>
-        <div class="userContact">
+        <div class="userContact" *ngIf="!showPhoneForm">
             <p><span>Phone:</span> {{user.phoneNumber}}</p>
-            <button *ngIf="user.username===this.userService.LoggedUser">Edit</button>
+            <button *ngIf="user.username===this.userService.LoggedUser" (click)="togglePhoneForm()">Edit</button>
         </div>
-        <div class="userContact">
+        <app-single-form *ngIf="showPhoneForm" 
+        [validator]="phoneValidator" 
+        [placeholder]="'0888...'"
+        [initialValue]="this.user.phoneNumber"
+        (closeForm)="togglePhoneForm()"
+        (submitter)="phoneFormSubmit($event)"></app-single-form>
+        <div class="userContact" *ngIf="!showEmailForm">
             <p><span>Email:</span> {{user.email}}</p>
-            <button *ngIf="user.username===this.userService.LoggedUser">Edit</button>
+            <button *ngIf="user.username===this.userService.LoggedUser" (click)="toggleEmailForm()">Edit</button>
         </div>
+        <app-single-form *ngIf="showEmailForm" 
+        [validator]="emailValidator" 
+        [placeholder]="'simon@gmail.com'"
+        [initialValue]="this.user.email"
+        (closeForm)="toggleEmailForm()"
+        (submitter)="emailFormSubmit($event)"></app-single-form>
         <div class="userContact" style="margin-top: 1.5em;" *ngIf="user.username===this.userService.LoggedUser">
             <p><span>Funds:</span> ${{user.USD}}</p>
             <div>

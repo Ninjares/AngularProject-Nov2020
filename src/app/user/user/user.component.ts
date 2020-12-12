@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Validators } from '@angular/forms';
 import { ActivatedRoute } from '@angular/router';
 import { UserService } from 'src/app/services/user.service';
 import { TxComplete } from 'src/app/transaction/models/TxCModel';
@@ -45,6 +46,10 @@ export class UserComponent implements OnInit {
     (error) => {
       console.error(error.message);
     })
+    this.loadUser();
+  }
+
+  private loadUser(){
     this.userService.getUser(this.activatedRoute.snapshot.params.id).subscribe((success) => {
       this.user = success;
       this.profilePic = (this.user.profilePicUrl == '' ? 'https://www.raceentry.com/img/Race-Registration-Image-Not-Found.png' : this.user.profilePicUrl);
@@ -54,4 +59,23 @@ export class UserComponent implements OnInit {
     })
   }
 
+  showPhoneForm: boolean = false;
+  phoneValidator = [Validators.required, Validators.pattern('[+]?[0-9]*')]
+  togglePhoneForm(){
+    this.showPhoneForm = !this.showPhoneForm
+  }
+  phoneFormSubmit(value){
+    console.log('phone: ' + value);
+    this.togglePhoneForm();
+  }
+
+  showEmailForm: boolean = false;
+  emailValidator = [Validators.required, Validators.pattern('[a-zA-Z0-9]+[@][a-zA-Z0-9]+[.][a-zA-Z]{2,3}')];
+  toggleEmailForm(){
+    this.showEmailForm = !this.showEmailForm
+  }
+  emailFormSubmit(value){
+    console.log('email: '+value)
+    this.toggleEmailForm();
+  }
 }

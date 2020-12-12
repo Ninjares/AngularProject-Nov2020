@@ -8,6 +8,7 @@ import { FirebaseService } from '../services/firebase.service';
 import { FormBuilder, FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { userRoutingModule } from './userRouting'
 import { TxModule } from '../transaction/tx.module';
+import { SingleFormComponent } from './single-form/single-form.component';
 
 
 
@@ -15,7 +16,8 @@ import { TxModule } from '../transaction/tx.module';
   declarations: [
     LoginComponent,
     RegisterComponent,
-    UserComponent
+    UserComponent,
+    SingleFormComponent
   ],
   imports: [
     CommonModule,

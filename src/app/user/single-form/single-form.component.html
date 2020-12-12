@@ -1,0 +1,7 @@
+<form [formGroup]='form'>
+    <input type="text" class="form-control" 
+    [class.error-form]="form.get('input').touched && form.get('input').errors"
+    placeholder="{{placeholder}}" formControlName="input">
+    <i [class.gray]="form.get('input').errors" class="fas fa-check" (click)="submit()"></i>
+    <i class="fas fa-times" (click)="closeFormF()"></i>
+</form>

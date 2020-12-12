@@ -1,0 +1,21 @@
+@import url("https://use.fontawesome.com/releases/v5.13.0/css/all.css");
+form{
+    display: flex;
+    flex-direction: row;
+}
+input{
+    flex-grow: 1;
+}
+i{
+    font-size: 1.2em;
+    margin-left: 0.4em;
+    cursor: pointer;
+}
+.error-form{
+    box-shadow: 0px 0px 20px 5px rgba(255, 105, 105, 0.603);
+    border-color: tomato;
+}
+.gray{
+    color: rgb(190, 190, 190);
+    cursor:unset
+}
