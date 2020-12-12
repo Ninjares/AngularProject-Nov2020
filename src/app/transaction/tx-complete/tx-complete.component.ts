@@ -14,7 +14,7 @@ export class TxCompleteComponent implements OnInit {
   itemId:string = this.activatedRoute.snapshot.params.id;
   transaction;
   buyerFunds: number;
-  constructor(private activatedRoute: ActivatedRoute, private txService: TxService, private userService:UserService, private router: Router) {
+  constructor(private activatedRoute: ActivatedRoute, private txService: TxService, public userService:UserService, private router: Router) {
 
   }
 

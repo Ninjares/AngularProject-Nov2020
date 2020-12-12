@@ -6,6 +6,13 @@
     </div>
     <p>{{transaction.description}}</p>
     <p class="message"></p>
+    <div class="unaffordable" *ngIf="buyerFunds<transaction.price">
+        <span>You cannot afford this item. Your funds: ${{buyerFunds}} < ${{transaction.price}} - Item price</span>
+        <div class="links">
+            <a class="mrkt" style="margin-right: 10px;" href="/market">Back to market</a>
+            <a href="/user/{{this.userService.LoggedUser}}">Deposit from profile</a>
+        </div>
+    </div>
     <div class="buttons" *ngIf="buyerFunds>=transaction.price&&showMainQuery">
         <a class="purchase" (click)="showPurchase()">Purchase ${{transaction.price}}</a>
         <a class="toMarket" href="/market">Back to market</a>
