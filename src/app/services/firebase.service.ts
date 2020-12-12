@@ -46,10 +46,10 @@ export class FirebaseService {
     return this.http.get<[]>(`${apiUrl}/completedTransactions/.json`);
   }
   updatePhone(id, phone){
-    return this.http.put<string>(`${apiUrl}/users/${id}/phoneNumber.json`, phone);
+    return this.http.put<string>(`${apiUrl}/users/${id}/phoneNumber.json`, `"${phone}"`);
   }
   updateEmail(id, email){
-    return this.http.put(`${apiUrl}/users/${id}/email.json`, email);
+    return this.http.put<string>(`${apiUrl}/users/${id}/email.json`, `"${email}"`);
   }
 
 

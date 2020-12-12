@@ -66,8 +66,7 @@ export class UserComponent implements OnInit {
     this.showPhoneForm = !this.showPhoneForm
   }
   phoneFormSubmit(value){
-    console.log(value);
-    this.fb.updatePhone(this.user.username, `${value}`).subscribe((success)=>{
+    this.fb.updatePhone(this.user.username, value).subscribe((success)=>{
       this.loadUser();
       this.togglePhoneForm();
     },
@@ -103,6 +102,6 @@ export class UserComponent implements OnInit {
     setTimeout(() =>{
       this.loadUser();
       this.toggleFundsForm();
-    },800)
+    },1000)
   }
 }
