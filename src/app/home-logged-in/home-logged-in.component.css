@@ -13,9 +13,17 @@ a{
 .container{
     margin-top: 4em;
 }
-ul>app-li-pending>li{
-    border-radius: 1em 1em 0 0;
+li{
+    display: flex;
+    flex-direction: row;
+    font-weight: 600;
 }
-li:last-child{
-    border-radius: 0 0 1em 1em ;
+li>span{
+    flex-grow: 1;
+    padding: 5px;
+    width: 1vw;
+}
+li>div{
+    flex-grow: 0;
+    width: 68px;
 }

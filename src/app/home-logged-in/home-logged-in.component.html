@@ -1,6 +1,12 @@
 <div class="container">
     <a href="/tx/create">Create new Transaction</a>
     <ul type="none">
+        <li>
+            <span>Product</span>
+            <span>Seller</span>
+            <span>Price</span>
+            <div></div>
+        </li>
         <app-li-pending *ngFor="let t of transactions" [transaction]="t" (refreshpage)="ngOnInit()"></app-li-pending>
     </ul>
 </div>

@@ -49,12 +49,12 @@ export class TxService {
   getPendingTxs(){
     return this.fb.getPendingTransactions().pipe().pipe(map(x => {
       return this.ObjectToArray(x); //order by date
-    }));
+    }), map(x => x.sort((a, b) => (a.createdOn < b.createdOn ? 1 : -1) )));
   }
   getCompletedTxs(){
     return this.fb.getCompletedTxs().pipe(map(x => {  
       return this.ObjectToArray(x); //order by date
-    }));
+    }), map(x => x.sort((a, b) => (a.purchasedOn < b.purchasedOn ? 1 : -1) )));
   }
   deleteTx(id){
     return this.fb.deletePending(id);
