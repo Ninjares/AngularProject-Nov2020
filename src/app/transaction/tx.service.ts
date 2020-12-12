@@ -56,6 +56,9 @@ export class TxService {
       return this.ObjectToArray(x);
     }));
   }
+  deleteTx(id){
+    return this.fb.deletePending(id);
+  }
 
   private ObjectToArray(obj){
     return Object.keys(obj).reduce((arr, currId) => {

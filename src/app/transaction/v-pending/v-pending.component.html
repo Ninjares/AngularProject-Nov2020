@@ -8,13 +8,18 @@
             <p>Seller: <a href="user/{{transaction.publisherUsername}}">{{transaction.publisherUsername}}</a></p>
         </div>
         <p>{{transaction.description}}</p>
-        <div class="bottom">
+        <div class="bottom" *ngIf="!showDeletionQuery">
             <div class='buysection'>
                 <span>${{transaction.price}}</span>
                 <a class ="btn" *ngIf="isLogged && transaction.publisherUsername != LoggedUser" href="tx/transact/{{transaction.id}}">Buy</a>
             </div>
             <a class="edit btn" *ngIf="isLogged && transaction.publisherUsername == LoggedUser"href="tx/edit/{{transaction.id}}">Edit</a>
-            <a class="delete btn" *ngIf="isLogged && transaction.publisherUsername == LoggedUser"(click)="deletionHandler()">Delete</a>
+            <a class="delete btn" *ngIf="isLogged && transaction.publisherUsername == LoggedUser"(click)="showDeletion()">Delete</a>
+        </div>
+        <div class="deleteConfirmation" *ngIf="showDeletionQuery">
+            <span>Are you sure?</span>
+            <a class="yes btn" (click)="deletionHandler()">Yes</a>
+            <a class="no btn"(click)="showDeletion()">No</a>
         </div>
     </div>
 </div>

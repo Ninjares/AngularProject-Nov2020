@@ -60,6 +60,8 @@ h2{
 .btn{
     border-radius: calc(1vh + 0.6em);
     padding: 0.6em;
+    cursor: pointer;
+    border: 1px solid gray;
 }
 .edit{
     background: rgb(70, 186, 231);
@@ -71,4 +73,18 @@ h2{
 }
 a{
     text-decoration: unset;
+}
+.deleteConfirmation{
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-end;
+    align-items: center;
+}
+.yes{
+    background-color: tomato;
+    margin-left: 1em;
+}
+.no{
+    background-color: yellowgreen;
+    margin-left: 0.4em;
 }

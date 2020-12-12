@@ -1,7 +1,10 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { transition } from '@angular/animations';
+import { Component, Input, OnInit, Output } from '@angular/core';
+import { Router } from '@angular/router';
 import { transcode } from 'buffer';
 import { UserService } from 'src/app/services/user.service';
 import { TxModel } from '../models/TxModel';
+import { TxService } from '../tx.service';
 
 @Component({
   selector: 'app-v-pending',
@@ -12,14 +15,28 @@ export class VPendingComponent implements OnInit {
 
   @Input() transaction: TxModel;
   imageUrl:string;
-  constructor(private userService: UserService) { }
+  @Output() refresh:boolean = false;
+  constructor(private userService: UserService, private txService: TxService, private router:Router) {
+
+   }
   LoggedUser = this.userService.LoggedUser;
   isLogged:boolean = this.userService.isLogged;
+  showDeletionQuery: boolean = false;
+  showDeletion(){
+    this.showDeletionQuery = !this.showDeletionQuery;
+  }
+
   ngOnInit(): void {
     this.imageUrl = ( this.transaction.imageUrl == '' ? 'https://www.raceentry.com/img/Race-Registration-Image-Not-Found.png': this.transaction.imageUrl )
   }
   deletionHandler(){
-    console.log('delete')
+     this.txService.deleteTx(this.transaction.id).subscribe((success) => {
+       console.log(this.router.url)
+       //this.router.navigate([this.router.url.toString()]);
+     },
+     (error) => {
+       console.error(error.message);
+     })
   }
 
 }
