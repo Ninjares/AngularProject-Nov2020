@@ -1,13 +1,16 @@
 <li [class.first]="transaction.pos==1" [class.last]="transaction.pos==-1" [class.odd]="transaction.odd" [class.even]="!transaction.odd">
     <div class="listing">
-        <div class="left">
-            <p>{{transaction.seller}}</p>
+        <i *ngIf="atUserPage&&this.transaction.seller!=this.merchantField" class="fas fa-arrow-right"></i>
+        <i *ngIf="atUserPage&&this.transaction.seller==this.merchantField" class="fas fa-arrow-left"></i>
+        <div class="left dContainers">
+            <p *ngIf="!atUserPage">{{transaction.seller}}</p>
             <p>{{transaction.title}}</p>
         </div>
-        <i class="fas fa-exchange-alt"></i>
-        <div class="right">
+        <i *ngIf="!atUserPage" class="fas fa-exchange-alt"></i>
+        <div [class.right]="!atUserPage" class="dContainers">
             <p>${{transaction.price}}</p>
-            <p>{{transaction.buyer}}</p>
+            <p *ngIf="atUserPage">{{merchantField}}</p>
+            <p *ngIf="!atUserPage">{{transaction.buyer}}</p>
         </div>
         <button (click)="toggleDetails()">Details</button>
     </div>

@@ -24,12 +24,29 @@
         <div class='openTx'>
             <h3>Open Transactions</h3>
             <ul type='none'>
+                <li>
+                    <span>Product</span>
+                    <span>Seller</span>
+                    <span>Price</span>
+                    <div></div>
+                </li>
                 <app-li-pending *ngFor="let t of pendingTxs" [transaction]="t" (refreshpage)="ngOnInit()"></app-li-pending>
             </ul>
         </div>
         <div class='CompletedTx'>
             <h3>Completed Transactions</h3>
             <ul type='none'>
+                <li>
+                    <div class="i"></div>
+                    <div>
+                        <span>Product</span>
+                    </div>
+                    <div>
+                        <span>Price</span>
+                        <span>Merchant</span>
+                    </div>
+                    <div class="placeholder"></div>
+                </li>
                 <app-li-complete *ngFor="let t of completeTxs" [transaction]="t"></app-li-complete>
             </ul>
         </div>

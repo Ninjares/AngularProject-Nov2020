@@ -7,12 +7,12 @@
 .listing *{
     margin: 5px;
 }
-.left, .right{
+.dContainers{
     display: flex;
     flex-direction: row;
     flex-grow: 1;
 }
-.left *, .right *{
+.dContainers *{
     flex-grow: 1;
     width: 1vw;
 }
@@ -43,4 +43,12 @@ i{
     display: flex;
     flex-direction: row;
     font-size: 1.3em;
+}
+.fa-arrow-left{
+    color: rgb(7, 76, 133);
+    font-weight: bold;
+}
+.fa-arrow-right{
+    color: rgb(0, 126, 0);
+    font-weight: bold;
 }

@@ -33,3 +33,44 @@ ul{
     flex-direction: row;
     justify-content: space-between;
 }
+
+.openTx li{
+    display: flex;
+    flex-direction: row;
+    font-weight: 600;
+}
+.openTx li>span{
+    flex-grow: 1;
+    padding: 5px;
+    width: 1vw;
+}
+.openTx li>div{
+    flex-grow: 0;
+    width: 68px;
+}
+.CompletedTx li{
+    display: flex;
+    flex-direction: row;
+    font-weight: 600;
+}
+.CompletedTx span{
+    flex-grow: 1;
+    padding:5px;
+    width: 1vw;
+}
+.CompletedTx .placeholder{
+    flex-grow: 0;
+    width: 68px;
+    padding: unset;
+}
+.CompletedTx .i{
+    flex-grow: 0;
+    width: 29px;
+    padding: unset;
+}
+.CompletedTx div{
+    display: flex;
+    flex-direction: row;
+    flex-grow: 1;
+    padding: 5px;
+}
