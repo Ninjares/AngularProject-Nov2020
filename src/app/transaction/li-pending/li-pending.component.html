@@ -1,7 +1,7 @@
 <li [class.first]="transaction.pos==1" [class.last]="transaction.pos==-1" [class.odd]="transaction.odd" [class.even]="!transaction.odd">
     <div class="listing">
         <p>{{transaction.title}}</p>
-        <p>{{transaction.publisherUsername}}</p>
+        <p *ngIf="!atUserPage">{{transaction.publisherUsername}}</p>
         <p>$ {{transaction.price}}</p>
         <button [class.toggled]="viewDetails" (click)="toggleDetails()">Details</button>
     </div>
