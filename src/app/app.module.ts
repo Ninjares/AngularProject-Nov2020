@@ -23,6 +23,7 @@ import { TxRoutingModule } from './transaction/TxRouting';
 import { TxModule } from './transaction/tx.module';
 import { UserModule } from './user/user.module';
 import { E404Component } from './e404/e404.component';
+import { AppInterceptorProvider } from './app.interceptor';
 @NgModule({
   declarations: [
     AppComponent,
@@ -40,7 +41,7 @@ import { E404Component } from './e404/e404.component';
     TxModule,
     UserModule
   ],
-  providers: [FirebaseService, UserService, StorageService, AuthGuard],
+  providers: [FirebaseService, UserService, StorageService, AuthGuard, AppInterceptorProvider],
   bootstrap: [AppComponent, NavbarComponent, FooterComponent]
 })
 export class AppModule { }

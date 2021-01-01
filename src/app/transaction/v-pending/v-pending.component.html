@@ -8,7 +8,9 @@
             <p>Seller: <a href="user/{{transaction.publisherUsername}}">{{transaction.publisherUsername}}</a></p>
         </div>
         <p>{{transaction.description}}</p>
+        
         <div class="bottom" *ngIf="!showDeletionQuery">
+            <span class="date">Published on: <i>{{transaction.createdOn | date: 'dd.MM.yyyy- h:mm'}}</i></span>
             <div class='buysection'>
                 <span>${{transaction.price}}</span>
                 <a class ="btn" *ngIf="isLogged && transaction.publisherUsername != LoggedUser" href="tx/transact/{{transaction.id}}">Buy</a>

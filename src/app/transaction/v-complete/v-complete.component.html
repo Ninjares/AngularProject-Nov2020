@@ -8,6 +8,7 @@
             <p>Seller: <a href="user/{{transaction.seller}}">{{transaction.seller}}</a></p>
         </div>
         <p class="desc">{{transaction.description}}</p>
+        <p>Purchased on: <i>{{transaction.purchasedOn | date: 'dd.MM.yyyy - h:mm'}}</i></p>
     </div>
     <div>
 </div>

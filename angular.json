@@ -124,5 +124,8 @@
       }
     }
   },
-  "defaultProject": "Exchange2"
+  "defaultProject": "Exchange2",
+  "cli": {
+    "analytics": false
+  }
 }

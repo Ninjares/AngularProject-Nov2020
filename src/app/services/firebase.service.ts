@@ -13,7 +13,7 @@ export class FirebaseService {
   constructor(private http: HttpClient) {
   }
   registerUser(userdata){
-    return this.http.put<any>(`${apiUrl}/users/${userdata.username}.json`, userdata.username = {
+    return this.http.put<any>(`/users/${userdata.username}.json`, userdata.username = {
         email: userdata.email,
         phoneNumber: userdata.phoneNumber,
         password: userdata.password,
@@ -22,41 +22,41 @@ export class FirebaseService {
     });
   }
   getUser(username):Observable<any>{
-    return this.http.get<any>(`${apiUrl}/users/${username}.json`)
+    return this.http.get<any>(`/users/${username}.json`)
   }
   getPendingTransactions():Observable<[]>{
-    return this.http.get<[]>(`${apiUrl}/pendingTransactions/.json`);
+    return this.http.get<[]>(`/pendingTransactions/.json`);
   }
   getTransaction(id){
-    return this.http.get<any>(`${apiUrl}/pendingTransactions/${id}.json`);
+    return this.http.get<any>(`/pendingTransactions/${id}.json`);
   }
   createTx(txData){
-    return this.http.post<any>(`${apiUrl}/pendingTransactions/.json`, txData);
+    return this.http.post<any>(`/pendingTransactions/.json`, txData);
   }
   updateTx(id, data){
-    return this.http.put(`${apiUrl}/pendingTransactions/${id}.json`, data);
+    return this.http.put(`/pendingTransactions/${id}.json`, data);
   }
   completeTx(txData){
-    return this.http.post(`${apiUrl}/completedTransactions/.json`, txData);
+    return this.http.post(`/completedTransactions/.json`, txData);
   }
   deletePending(id){
-    return this.http.delete(`${apiUrl}/pendingTransactions/${id}.json`);
+    return this.http.delete(`/pendingTransactions/${id}.json`);
   }
   getCompletedTxs(){
-    return this.http.get<[]>(`${apiUrl}/completedTransactions/.json`);
+    return this.http.get<[]>(`/completedTransactions/.json`);
   }
   updatePhone(id, phone){
-    return this.http.put<string>(`${apiUrl}/users/${id}/phoneNumber.json`, `"${phone}"`);
+    return this.http.put<string>(`/users/${id}/phoneNumber.json`, `"${phone}"`);
   }
   updateEmail(id, email){
-    return this.http.put<string>(`${apiUrl}/users/${id}/email.json`, `"${email}"`);
+    return this.http.put<string>(`/users/${id}/email.json`, `"${email}"`);
   }
 
 
 
   updateFunds(username, sum){
-    this.http.get<any>(`${apiUrl}/users/${username}/USD.json`).subscribe(x => {
-      this.http.put<any>(`${apiUrl}/users/${username}/USD.json`, Number(x)+Number(sum)).subscribe();
+    this.http.get<any>(`/users/${username}/USD.json`).subscribe(x => {
+      this.http.put<any>(`/users/${username}/USD.json`, Number(x)+Number(sum)).subscribe();
     });
   }
 }
